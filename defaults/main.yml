@@ -447,6 +447,10 @@ security_lock_session_when_inactive: yes                     # RHEL-07-010073
 # Time after screensaver starts when user login is required.
 security_lock_session_screensaver_lock_delay: 5              # RHEL-07-010074
 
+## Miscellaneous (misc)
+# Enable virus scanning with clamav
+security_enable_virus_scanner: no                            # RHEL-07-030810
+
 ## Packages (packages)
 # Remove packages from the system as required by the STIG. Set any of these
 # to 'no' to skip their removal.
