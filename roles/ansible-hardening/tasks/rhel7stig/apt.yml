@@ -88,6 +88,7 @@
     state: present
   when:
     - security_enable_gpgcheck_packages_local | bool
+  become: true
   tags:
     - high
     - V-71979
