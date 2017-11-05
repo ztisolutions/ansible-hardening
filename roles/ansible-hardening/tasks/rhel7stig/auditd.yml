@@ -27,6 +27,7 @@
     path: /etc/audisp/audisp-remote.conf
   register: audisp_remote_conf
   check_mode: no
+  become: true
   tags:
     - always
 
