@@ -18,6 +18,7 @@
     path: /etc/audit/auditd.conf
   register: auditd_conf
   check_mode: no
+  become: true
   tags:
     - always
 
