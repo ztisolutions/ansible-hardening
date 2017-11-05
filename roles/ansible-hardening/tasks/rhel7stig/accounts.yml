@@ -31,6 +31,7 @@
     block: "{{ lookup('template', 'pwquality.conf.j2') }}"
   when:
     - pwquality_config_check.stat.exists
+  become: true
   tags:
     - accounts
     - medium
