@@ -60,6 +60,7 @@
   when:
     - aide_conf.results[0].stat.exists | bool
     - ansible_os_family | lower == 'debian'
+  become: true
   tags:
     - low
     - aide
