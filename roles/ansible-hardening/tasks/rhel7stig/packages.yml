@@ -19,6 +19,7 @@
     state: "{{ item }}"
   with_items:
     - "{{ stig_packages_rhel7 | selectattr('enabled') | map(attribute='state') | unique | list }}"
+  become: true
   tags:
     - cat1
     - auth
