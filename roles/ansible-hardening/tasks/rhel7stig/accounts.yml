@@ -148,6 +148,7 @@
     - item.value != ''
     - item.ansible_os_family == 'all' or item.ansible_os_family == ansible_os_family
   with_items: "{{ shadow_utils_rhel7 }}"
+  become: true
   tags:
     - accounts
     - medium
