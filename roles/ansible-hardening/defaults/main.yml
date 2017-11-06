@@ -100,23 +100,23 @@ security_rhel7_auditd_action_mail_acct: root                 # V-72093
 security_rhel7_audit_chsh: yes                               # V-72167
 security_rhel7_audit_chage: yes                              # V-72155
 security_rhel7_audit_chcon: yes                              # V-72139
-security_rhel7_audit_chmod: no                               # V-72105
-security_rhel7_audit_chown: no                               # V-72097
+security_rhel7_audit_chmod: yes                               # V-72105
+security_rhel7_audit_chown: yes                              # V-72097
 security_rhel7_audit_creat: yes                              # V-72123
 security_rhel7_audit_crontab: yes                            # V-72183
 security_rhel7_audit_delete_module: yes                      # V-72189
-security_rhel7_audit_fchmod: no                              # V-72107
-security_rhel7_audit_fchmodat: no                            # V-72109
-security_rhel7_audit_fchown: no                              # V-72099
-security_rhel7_audit_fchownat: no                            # V-72103
-security_rhel7_audit_fremovexattr: no                        # V-72119
-security_rhel7_audit_fsetxattr: no                           # V-72113
+security_rhel7_audit_fchmod: yes                              # V-72107
+security_rhel7_audit_fchmodat: yes                            # V-72109
+security_rhel7_audit_fchown: yes                              # V-72099
+security_rhel7_audit_fchownat: yes                            # V-72103
+security_rhel7_audit_fremovexattr: yes                        # V-72119
+security_rhel7_audit_fsetxattr: yes                           # V-72113
 security_rhel7_audit_ftruncate: yes                          # V-72133
 security_rhel7_audit_init_module: yes                        # V-72187
 security_rhel7_audit_gpasswd: yes                            # V-72153
-security_rhel7_audit_lchown: no                              # V-72101
-security_rhel7_audit_lremovexattr: no                        # V-72121
-security_rhel7_audit_lsetxattr: no                           # V-72115
+security_rhel7_audit_lchown: yes                              # V-72101
+security_rhel7_audit_lremovexattr: yes                        # V-72121
+security_rhel7_audit_lsetxattr: yes                           # V-72115
 security_rhel7_audit_mount: yes                              # V-72171
 security_rhel7_audit_newgrp: yes                             # V-72165
 security_rhel7_audit_open: yes                               # V-72125
@@ -126,14 +126,14 @@ security_rhel7_audit_pam_timestamp_check: yes                # V-72185
 security_rhel7_audit_passwd: yes                             # V-72149
 security_rhel7_audit_postdrop: yes                           # V-72175
 security_rhel7_audit_postqueue: yes                          # V-72177
-security_rhel7_audit_removexattr: no                         # V-72117
+security_rhel7_audit_removexattr: yes                         # V-72117
 security_rhel7_audit_rename: yes                             # V-72199
 security_rhel7_audit_renameat: yes                           # V-72201
 security_rhel7_audit_restorecon: yes                         # V-72141
 security_rhel7_audit_rmdir: yes                              # V-72203
 security_rhel7_audit_semanage: yes                           # V-72135
 security_rhel7_audit_setsebool: yes                          # V-72137
-security_rhel7_audit_setxattr: no                            # V-72111
+security_rhel7_audit_setxattr: yes                            # V-72111
 security_rhel7_audit_ssh_keysign: yes                        # V-72179
 security_rhel7_audit_su: yes                                 # V-72159
 security_rhel7_audit_sudo: yes                               # V-72161
@@ -170,14 +170,14 @@ security_pwquality_limit_repeated_characters: yes            # V-71915
 security_pwquality_limit_repeated_character_classes: yes     # V-71917
 security_pwquality_require_minimum_password_length: no       # V-71935
 # Use pwquality when passwords are changed or established.
-security_enable_pwquality_password_set: no                   # V-73159
+security_enable_pwquality_password_set: yes                   # V-73159
 # Ensure passwords are stored using SHA512.
 security_password_encrypt_method: SHA512                     # V-71921
 # Ensure user/group admin utilities only store encrypted passwords.
 security_libuser_crypt_style_sha512: yes                     # V-71923
 # Set a minimum/maximum lifetime limit for user passwords.
-#security_password_min_lifetime_days: 1                      # V-71925
-#security_password_max_lifetime_days: 60                     # V-71929
+security_password_min_lifetime_days: 1                      # V-71925
+security_password_max_lifetime_days: 60                     # V-71929
 # Set a delay (in seconds) between failed login attempts.
 security_shadow_utils_fail_delay: 4                          # V-71951
 # Set a umask for all authenticated users.
@@ -187,7 +187,7 @@ security_shadow_utils_create_home: yes                       # V-72013
 # How many old user password to remember to prevent password re-use.
 #security_password_remember_password: 5                      # V-71933
 # Disable user accounts if the password expires.
-security_disable_account_if_password_expires: no             # V-71941
+security_disable_account_if_password_expires: yes             # V-71941
 # Lock user accounts with excessive login failures. See documentation.
 security_pam_faillock_enable: no                             # V-71945 / V-71943 / RHEL-07-010373
 security_pam_faillock_interval: 900
@@ -195,18 +195,18 @@ security_pam_faillock_attempts: 3
 security_pam_faillock_deny_root: yes                         # RHEL-07-010373
 security_pam_faillock_unlock_time: 604800                    # V-71943
 # Limit the number of concurrent connections per account.
-#security_rhel7_concurrent_session_limit: 10                 # V-72217
+security_rhel7_concurrent_session_limit: 10                 # V-72217
 # Remove .shosts and shosts.equiv files.
-security_rhel7_remove_shosts_files: no                       # V-72277
+security_rhel7_remove_shosts_files: yes                       # V-72277
 
 ## File permissions (file_perms)
 # Reset file permissions and ownership for files installed via RPM packages.
-security_reset_perm_ownership: no                            # V-71849
+security_reset_perm_ownership: yes                            # V-71849
 # Search for files/directories owned by invalid users or groups.
-security_search_for_invalid_owner: no                        # V-72007
-security_search_for_invalid_group_owner: no                  # V-72009
+security_search_for_invalid_owner: yes                        # V-72007
+security_search_for_invalid_group_owner: yes                  # V-72009
 # Set user/group owners on each home directory and set mode to 0750.
-security_set_home_directory_permissions_and_owners: no       # V-72017 / V-72019 / V-72021
+security_set_home_directory_permissions_and_owners: yes       # V-72017 / V-72019 / V-72021
 
 ## Graphical interfaces (graphical)
 # Disable automatic gdm logins
@@ -252,7 +252,7 @@ security_enable_firewalld_rate_limit_burst: 100
 # Update the grub configuration.
 security_enable_grub_update: yes
 # Require authentication in GRUB to boot into single-user or maintenance modes.
-security_require_grub_authentication: no                     # V-71961 / V-71963
+security_require_grub_authentication: yes                     # V-71961 / V-71963
 # The default password for grub authentication is 'secrete'.
 security_grub_password_hash: grub.pbkdf2.sha512.10000.7B21785BEAFEE3AC71459D8210E3FB42EC0F5011C24A2DF31A8127D43A0BB4F1563549DF443791BE8EDA3AE4E4D4E04DB78D4CA35320E4C646CF38320CBE16EC.4B46176AAB1405D97BADB696377C29DE3B3266188D9C3D2E57F3AE851815CCBC16A275B0DBF6F79D738DAD8F598BEE64C73AE35F19A28C5D1E7C7D96FF8A739B
 # Set session timeout.
@@ -294,9 +294,9 @@ security_rhel7_remove_tftp_server: yes                       # V-72301
 security_rhel7_remove_xorg: yes                              # V-72307
 security_rhel7_remove_ypserv: yes                            # V-71969
 # Automatically remove dependencies when removing packages.
-security_package_clean_on_remove: no                         # V-71987
+security_package_clean_on_remove: yes                         # V-71987
 # Automatically update packages.
-security_rhel7_automatic_package_updates: no                 # V-71999
+security_rhel7_automatic_package_updates: yes                 # V-71999
 # Install packages for multi-factor authentication.
 security_install_multifactor_auth_packages: yes              # V-72417
 
@@ -304,7 +304,7 @@ security_install_multifactor_auth_packages: yes              # V-72417
 # Enable GPG checks for packages and repository data.
 security_enable_gpgcheck_packages: yes                       # V-71977
 security_enable_gpgcheck_packages_local: yes                 # V-71979
-security_enable_gpgcheck_repo: no                            # V-71981
+security_enable_gpgcheck_repo: yes                            # V-71981
 
 ## ssh server (sshd)
 # Ensure sshd is running and enabled at boot time.
