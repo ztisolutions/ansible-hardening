@@ -107,7 +107,7 @@
     group: "{{ item.group.name }}"
     mode: "u-X,g-ws,o-rwxt"
   when:
-    - item.uid >= 1000
+    - (item.uid >= 1000 and item.name != 'nobody')
     - security_set_home_directory_permissions_and_owners | bool
   with_items: "{{ user_list.users | selectattr('uid', 'greaterthan', 999) | list }}"
   tags:
