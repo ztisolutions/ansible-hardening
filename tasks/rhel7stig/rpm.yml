@@ -63,6 +63,7 @@
     line: "{{ item.line }}"
     state: present
   with_items: "{{ rpm_gpgchecks | default([]) }}"
+  become: true
   tags:
     - rpm
     - high
