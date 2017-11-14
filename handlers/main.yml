@@ -51,6 +51,7 @@
   service:
     name: "{{ ssh_service }}"
     state: restarted
+  become: true
 
 - name: restart vsftpd
   service:
