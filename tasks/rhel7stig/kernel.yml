@@ -20,6 +20,7 @@
     create: yes
   when:
     - security_rhel7_disable_usb_storage | bool
+  become: true
   tags:
     - kernel
     - medium
@@ -33,6 +34,7 @@
     reload: yes
   when:
     - item.enabled | bool
+  become: true
   with_items: "{{ sysctl_settings_rhel7 }}"
   tags:
     - medium
@@ -53,6 +55,7 @@
   failed_when: kdump_service_check.rc not in [0,3,4]
   changed_when: False
   check_mode: no
+  become: true
   tags:
     - kernel
     - medium
@@ -66,6 +69,7 @@
   when:
     - kdump_service_check.rc not in [3,4]
     - security_disable_kdump
+  become: true
   tags:
     - kernel
     - medium
@@ -79,6 +83,7 @@
   check_mode: no
   when:
     - ansible_pkg_mgr in ['yum', 'zypper']
+  become: true
   tags:
     - always
 
@@ -103,6 +108,7 @@
     create: yes
   when:
     - security_rhel7_disable_dccp | bool
+  become: true
   tags:
     - kernel
     - medium
