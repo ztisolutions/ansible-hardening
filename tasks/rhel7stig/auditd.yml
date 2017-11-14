@@ -1,4 +1,4 @@
- ---
+---
 # Copyright 2016, Rackspace US, Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -96,9 +96,9 @@
     dest: /etc/audit/rules.d/osas-auditd-rhel7.rules
   when:
     - auditd_conf.stat.exists
+  become: true
   notify:
     - generate auditd rules
-  become: true
   tags:
     - auditd
     - V-72167
