@@ -56,13 +56,13 @@ auditd_config:
 audited_commands:
   - command: chsh
     stig_id: V-72167
-    arch_specific: no
+    arch_specific: yes
   - command: chage
     stig_id: V-72155
     arch_specific: no
   - command: chcon
     stig_id: V-72139
-    arch_specific: no
+    arch_specific: yes
   - command: chmod
     stig_id: V-72105
     arch_specific: yes
@@ -74,7 +74,7 @@ audited_commands:
     arch_specific: yes
   - command: crontab
     stig_id: V-72183
-    arch_specific: no
+    arch_specific: yes
   - command: delete_module
     stig_id: V-72189
     arch_specific: yes
@@ -104,7 +104,7 @@ audited_commands:
     arch_specific: yes
   - command: gpasswd
     stig_id: V-72153
-    arch_specific: no
+    arch_specific: yes
   - command: lchown
     stig_id: V-72101
     arch_specific: yes
@@ -117,10 +117,10 @@ audited_commands:
   - command: mount
     path: /bin
     stig_id: V-72171
-    arch_specific: no
+    arch_specific: yes
   - command: newgrp
     stig_id: V-72165
-    arch_specific: no
+    arch_specific: yes
   - command: open
     stig_id: V-72125
     arch_specific: yes
@@ -133,18 +133,18 @@ audited_commands:
   - command: pam_timestamp_check
     path: /sbin
     stig_id: V-72185
-    arch_specific: no
+    arch_specific: yes
   - command: passwd
     stig_id: V-72149
-    arch_specific: no
+    arch_specific: yes
   - command: postdrop
     path: /usr/sbin
     stig_id: V-72175
-    arch_specific: no
+    arch_specific: yes
   - command: postqueue
     path: /usr/sbin
     stig_id: V-72177
-    arch_specific: no
+    arch_specific: yes
   - command: removexattr
     stig_id: V-72117
     arch_specific: yes
@@ -157,47 +157,47 @@ audited_commands:
   - command: restorecon
     path: /usr/sbin
     stig_id: V-72141
-    arch_specific: no
+    arch_specific: yes
   - command: rmdir
     stig_id: V-72203
     arch_specific: yes
   - command: semanage
     path: /usr/sbin
     stig_id: V-72135
-    arch_specific: no
+    arch_specific: yes
   - command: setsebool
     path: /usr/sbin
     stig_id: V-72137
-    arch_specific: no
+    arch_specific: yes
   - command: setxattr
     stig_id: V-72111
     arch_specific: yes
   - command: ssh-keysign
     path: "{{ ssh_keysign_path }}"
     stig_id: V-72179
-    arch_specific: no
+    arch_specific: yes
   - command: su
     path: /bin
     stig_id: V-72159
-    arch_specific: no
+    arch_specific: yes
   - command: sudo
     stig_id: V-72161
-    arch_specific: no
+    arch_specific: yes
   - command: sudoedit
     path: /bin
     stig_id: V-72169
-    arch_specific: no
+    arch_specific: yes
   - command: truncate
     stig_id: V-72131
     arch_specific: yes
   - command: umount
     path: /bin
     stig_id: V-72173
-    arch_specific: no
+    arch_specific: yes
   - command: unix_chkpwd
     path: /sbin
     stig_id: V-72151
-    arch_specific: no
+    arch_specific: yes
   - command: unlink
     stig_id: V-72205
     arch_specific: yes
@@ -207,7 +207,7 @@ audited_commands:
   - command: userhelper
     path: /usr/sbin
     stig_id: V-72157
-    arch_specific: no
+    arch_specific: yes
 
 ## Password quality settings
 # This variable is used in main/rhel7stig/auth.yml to set password quality
