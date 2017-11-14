@@ -137,6 +137,7 @@
     job: "aide --check | /bin/mail -s \"$HOSTNAME - Daily aide integrity check run\" root"
   when:
     - ansible_pkg_mgr in ['yum', 'zypper']
+  become: true
   tags:
     - medium
     - aide
