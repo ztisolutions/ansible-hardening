@@ -196,7 +196,7 @@
 
 - name: V-72217 - The operating system must limit the number of concurrent sessions to 10 for all accounts and/or account types.
   blockinfile:
-    dest: /etc/security/limits.d/ansible-hardening-maxlogins.conf
+    dest: /etc/security/limits.conf
     create: yes
     block: |
       # Deployed by the ansible-hardening role
