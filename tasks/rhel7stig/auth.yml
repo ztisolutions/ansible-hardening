@@ -61,6 +61,7 @@
   when:
     - ansible_os_family == 'RedHat'
     - security_disallow_blank_password_login | bool
+  become: true
   tags:
     - auth
     - high
