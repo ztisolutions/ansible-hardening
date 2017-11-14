@@ -217,6 +217,7 @@
       TMOUT={{ security_rhel7_session_timeout }}
       readonly TMOUT
       export TMOUT
+  become: true
   tags:
     - medium
     - misc
@@ -230,6 +231,7 @@
   when:
     - not check_mode
     - security_rhel7_enable_chrony | bool
+  become: true
   tags:
     - medium
     - misc
@@ -239,6 +241,7 @@
   stat:
     path: "{{ chrony_conf_file }}"
   register: chrony_conf_check
+  become: true
   tags:
     - always
 
@@ -249,6 +252,7 @@
   when:
     - chrony_conf_check.stat.exists
     - security_rhel7_enable_chrony | bool
+  become: true
   notify:
     - restart chrony
   tags:
@@ -274,6 +278,7 @@
   when:
     - firewalld_status_check.rc not in [3,4]
     - security_enable_firewalld | bool
+  become: true
   tags:
     - medium
     - misc
@@ -286,6 +291,7 @@
   when:
     - firewalld_status_check.rc != 3
     - security_enable_firewalld_rate_limit | bool
+  become: true
   tags:
     - medium
     - misc
@@ -299,6 +305,7 @@
   check_mode: no
   changed_when: False
   failed_when: False
+  become: true
   tags:
     - always
     - skip_ansible_lint
@@ -311,6 +318,7 @@
   when:
     - nameserver_check is defined
     - nameserver_check.stdout_lines | length < 2
+  become: true
   tags:
     - low
     - misc
@@ -332,6 +340,7 @@
       Review all interfaces and disable promiscuous mode.
   when:
     - promiscuous_interface_check.rc == 0
+  become: true
   tags:
     - medium
     - misc
@@ -352,6 +361,7 @@
   when:
     - postfix_conf_check.stat.exists
     - security_rhel7_restrict_mail_relaying | bool
+  become: true
   tags:
     - medium
     - misc
