@@ -133,6 +133,7 @@
     line: 'INACTIVE=0'
   when:
     - security_disable_account_if_password_expires | bool
+  become: true
   tags:
     - accounts
     - medium
