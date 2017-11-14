@@ -165,6 +165,7 @@
   when:
     - auditd_conf.stat.exists
     - audisp_remote_conf.stat.exists
+  become: true
   notify:
     - restart auditd
   tags:
