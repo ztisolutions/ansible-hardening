@@ -184,6 +184,7 @@
   when:
     - grub_defaults_file_check.stat.exists | bool
     - security_require_grub_authentication | bool
+  become: true
   notify:
     - update grub config
   tags:
