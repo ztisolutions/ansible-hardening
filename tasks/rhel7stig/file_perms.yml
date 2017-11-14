@@ -84,6 +84,7 @@
   changed_when: false
   when:
     - security_search_for_invalid_group_owner | bool
+  become: true
   tags:
     - always
 
@@ -96,6 +97,7 @@
     - invalid_group_owner_files is defined
     - invalid_group_owner_files.stdout_lines is defined
     - invalid_group_owner_files.stdout_lines | length > 0
+  become: true
   tags:
     - file_perms
     - medium
@@ -110,6 +112,7 @@
   when:
     - (item.uid >= 1000 and item.name != 'nobody')
     - security_set_home_directory_permissions_and_owners | bool
+  become: true
   with_items: "{{ user_list.users | selectattr('uid', 'greaterthan', 999) | list }}"
   tags:
     - medium
@@ -124,6 +127,7 @@
   changed_when: False
   failed_when: False
   check_mode: no
+  become: true
   tags:
     - always
 
@@ -134,6 +138,7 @@
       {{ world_writable_dirs.stdout }}
   when:
     - world_writable_dirs is defined
+  become: true
   tags:
     - medium
     - file_perms
@@ -154,6 +159,7 @@
   when:
     - cron_allow_check is defined
     - cron_allow_check.stat.exists
+  become: true
   tags:
     - medium
     - file_perms
