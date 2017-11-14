@@ -21,6 +21,7 @@
   command: service auditd restart
   args:
     warn: no
+  become: true
 
 - name: restart chrony
   service:
@@ -67,6 +68,7 @@
 - name: generate auditd rules
   command: augenrules --load
   notify: restart auditd
+  become: true
 
 - name: rehash aliases
   command: newaliases
