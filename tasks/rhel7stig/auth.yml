@@ -33,7 +33,7 @@
 - name: Prevent users with blank or null passwords from authenticating (Debian/Ubuntu)
   lineinfile:
     dest: "{{ pam_auth_file }}"
-    state: present
+    state: absent
     regexp: "^(.*)nullok_secure(.*)$"
     line: '\1\2'
     backup: yes
@@ -50,7 +50,7 @@
 - name: Prevent users with blank or null passwords from authenticating (Red Hat)
   lineinfile:
     dest: "{{ pam_auth_file }}"
-    state: present
+    state: absent
     regexp: "^({{ item }}.*sufficient.*)nullok(.*)$"
     line: '\1\2'
     backup: yes
@@ -70,7 +70,7 @@
 - name: Prevent users with blank or null passwords from authenticating (SUSE)
   lineinfile:
     dest: "{{ item }}"
-    state: present
+    state: absent
     regexp: "^(.*required.*)nullok(.*)$"
     line: '\1\2'
     backup: yes
