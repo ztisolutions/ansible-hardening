@@ -80,6 +80,7 @@
   when:
     - security_package_clean_on_remove | bool
     - ansible_os_family | lower == 'redhat'
+  become: true
   tags:
     - low
     - packages
