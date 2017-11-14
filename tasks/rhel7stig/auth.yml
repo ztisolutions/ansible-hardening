@@ -203,6 +203,7 @@
       * hard maxlogins {{ security_rhel7_concurrent_session_limit }}
   when:
     - security_rhel7_concurrent_session_limit is defined
+  become: true
   tags:
     - auth
     - low
