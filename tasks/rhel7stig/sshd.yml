@@ -19,6 +19,7 @@
     dest: "{{ security_sshd_banner_file }}"
     owner: root
     group: root
+  become: true
   tags:
     - high
     - sshd
@@ -35,6 +36,7 @@
     block: "{{ lookup('template', 'sshd_config_block.j2') }}"
   notify:
     - restart ssh
+  become: true
   tags:
     - high
     - sshd
@@ -64,6 +66,7 @@
     enabled: yes
   when:
     - security_enable_sshd | bool
+  become: true
   tags:
     - medium
     - sshd
@@ -75,6 +78,7 @@
   # The shell command will always report 'changed' so we need to
   # ignore that since this role is supposed to be idempotent.
   changed_when: false
+  become: true
 
 - name: Public host key files must have mode 0644 or less
   file:
@@ -82,6 +86,7 @@
     mode: "u-xX,g-wxs,o-wxt"
   with_items:
     - "{{ public_ssh_host_keys.stdout_lines | default([]) }}"
+  become: true
   tags:
     - medium
     - sshd
@@ -93,6 +98,7 @@
   # The sheel command will always report 'changed' so we need to
   # ignore that since this role is supposed to be idempotent
   changed_when: false
+  become: true
 
 - name: Private host key files must have mode 0600 or less
   file:
@@ -100,6 +106,7 @@
     mode: "u-xX,g-rwxs,o-rwxt"
   with_items:
     - "{{ private_ssh_host_keys.stdout_lines | default([]) }}"
+  become: true
   tags:
     - medium
     - sshd
