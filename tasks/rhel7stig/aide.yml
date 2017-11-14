@@ -91,6 +91,7 @@
     path: "{{ aide_database_file }}"
   register: aide_database
   check_mode: no
+  become: true
   tags:
     - always
 
