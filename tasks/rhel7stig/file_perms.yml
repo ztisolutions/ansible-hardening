@@ -58,6 +58,7 @@
   changed_when: false
   when:
     - security_search_for_invalid_owner | bool
+  become: true
   tags:
     - always
 
