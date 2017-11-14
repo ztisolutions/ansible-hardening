@@ -63,12 +63,12 @@ security_epel_release_package: epel-release
 
 ## Accounts (accounts)
 # Set minimum password lifetime to 1 day for interactive accounts.
-security_set_minimum_password_lifetime: no                   # V-71927
-security_set_maximum_password_lifetime: no                   # V-71931
+security_set_minimum_password_lifetime: yes                   # V-71927
+security_set_maximum_password_lifetime: yes                   # V-71931
 
 ## AIDE (aide)
 # Initialize the AIDE database immediately (may take time).
-security_rhel7_initialize_aide: no                           # V-71973
+security_rhel7_initialize_aide: yes                           # V-71973
 
 # The default Ubuntu configuration for AIDE will cause it to wander into some
 # terrible places on the system, such as /var/lib/lxc and images in /opt.
@@ -168,7 +168,7 @@ security_pwquality_require_characters_changed: yes           # V-71911
 security_pwquality_require_character_classes_changed: yes    # V-71913
 security_pwquality_limit_repeated_characters: yes            # V-71915
 security_pwquality_limit_repeated_character_classes: yes     # V-71917
-security_pwquality_require_minimum_password_length: no       # V-71935
+security_pwquality_require_minimum_password_length: yes       # V-71935
 # Use pwquality when passwords are changed or established.
 security_enable_pwquality_password_set: yes                   # V-73159
 # Ensure passwords are stored using SHA512.
@@ -189,7 +189,7 @@ security_shadow_utils_create_home: yes                       # V-72013
 # Disable user accounts if the password expires.
 security_disable_account_if_password_expires: yes             # V-71941
 # Lock user accounts with excessive login failures. See documentation.
-security_pam_faillock_enable: no                             # V-71945 / V-71943 / RHEL-07-010373
+security_pam_faillock_enable: yes                             # V-71945 / V-71943 / RHEL-07-010373
 security_pam_faillock_interval: 900
 security_pam_faillock_attempts: 3
 security_pam_faillock_deny_root: yes                         # RHEL-07-010373
