@@ -93,7 +93,7 @@
 - name: Deploy rules for auditd based on STIG requirements
   template:
     src: osas-auditd-rhel7.j2
-    dest: /etc/audit/rules.d/osas-auditd-rhel7.rules
+    dest: /etc/audit/rules.d/audit.rules
   when:
     - auditd_conf.stat.exists
   become: true
