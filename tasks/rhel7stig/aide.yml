@@ -106,6 +106,7 @@
     - aide_conf.results[0].stat.exists | bool or aide_conf.results[1].stat.exists | bool
     - not aide_database.stat.exists | bool
     - security_rhel7_initialize_aide | bool
+  become: true
   tags:
     - medium
     - aide
