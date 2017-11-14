@@ -244,6 +244,7 @@
     state: present
   when:
     - security_enable_pwquality_password_set | bool
+  become: true
   tags:
     - accounts
     - medium
