@@ -81,7 +81,7 @@
 
 - name: Remove old RHEL 6 audit rules file
   file:
-    path: /etc/audit/rules.d/osas-auditd.rules
+    path: /etc/audit/rules.d/audit.rules
     state: absent
   when:
     - auditd_conf.stat.exists
