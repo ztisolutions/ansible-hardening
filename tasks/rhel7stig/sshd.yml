@@ -16,6 +16,7 @@
 
 - name: V-71861 - DOD Warning Banner - /etc/issue
   template: src=./templates/issue dest="{{ security_sshd_banner_file }}"
+  become: true
   tags:
     - high
     - v71861
