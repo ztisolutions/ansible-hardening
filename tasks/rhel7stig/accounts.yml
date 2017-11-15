@@ -121,6 +121,7 @@
     state: present
   when:
     - security_password_remember_password is defined
+  become: true
   tags:
     - accounts
     - medium
