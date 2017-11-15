@@ -92,7 +92,7 @@
 
 - name: Deploy rules for auditd based on STIG requirements
   blockinfile:
-    dest: "{{ pam_password_file }}"
+    dest: "{{ audit_rules_file }}"
     state: present
     marker: "# {mark} MANAGED BY ANSIBLE-HARDENING"
     insertbefore: EOF
