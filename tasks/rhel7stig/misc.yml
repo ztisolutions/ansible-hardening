@@ -162,6 +162,7 @@
     - clamav_install_check.stat.exists
     - security_enable_virus_scanner | bool
     - ansible_os_family | lower == 'redhat'
+  become: true
   notify:
     - restart clamav
   tags:
