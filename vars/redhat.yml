@@ -33,6 +33,7 @@ aide_database_out_file: /var/lib/aide/aide.db.new.gz
 chrony_conf_file: /etc/chrony.conf
 daemon_init_params_file: /etc/init.d/functions
 pkg_mgr_config: "{{ (ansible_pkg_mgr == 'yum') | ternary('/etc/yum.conf', '/etc/dnf/dnf.conf') }}"
+audit_rules_file: /etc/audit/rules.d/audit.rules
 
 # Service names
 cron_service: crond
