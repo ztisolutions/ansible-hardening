@@ -91,12 +91,9 @@
     - always
 
 - name: Deploy rules for auditd based on STIG requirements
-  blockinfile:
-    dest: "{{ pam_password_file }}"
-    state: present
-    marker: "# {mark} MANAGED BY ANSIBLE-HARDENING"
-    insertbefore: EOF
-    block: "{{ lookup('template', 'audit_rules.j2') }}"
+  template:
+    src: osas-auditd-rhel7.j2
+    dest: /etc/audit/rules.d/audit.rules
   when:
     - auditd_conf.stat.exists
   become: true
@@ -158,72 +155,6 @@
     - V-72195
     - V-72197
     - V-72081
-# - name: Deploy rules for auditd based on STIG requirements
-#   template:
-#     src: osas-auditd-rhel7.j2
-#     dest: /etc/audit/rules.d/audit.rules
-#   when:
-#     - auditd_conf.stat.exists
-#   become: true
-#   notify:
-#     - generate auditd rules
-#   tags:
-#     - auditd
-#     - V-72167
-#     - V-72155
-#     - V-72139
-#     - V-72105
-#     - V-72097
-#     - V-72123
-#     - V-72183
-#     - V-72189
-#     - V-72107
-#     - V-72109
-#     - V-72099
-#     - V-72103
-#     - V-72119
-#     - V-72113
-#     - V-72133
-#     - V-72187
-#     - V-72153
-#     - V-72101
-#     - V-72121
-#     - V-72115
-#     - V-72171
-#     - V-72165
-#     - V-72125
-#     - V-72127
-#     - V-72129
-#     - V-72185
-#     - V-72149
-#     - V-72175
-#     - V-72177
-#     - V-72117
-#     - V-72199
-#     - V-72201
-#     - V-72141
-#     - V-72203
-#     - V-72135
-#     - V-72137
-#     - V-72111
-#     - V-72179
-#     - V-72159
-#     - V-72161
-#     - V-72169
-#     - V-72131
-#     - V-72173
-#     - V-72151
-#     - V-72205
-#     - V-72207
-#     - V-72157
-#     - V-72143
-#     - V-72163
-#     - V-72191
-#     - V-72193
-#     - V-72195
-#     - V-72197
-#     - V-72081
-
 
 - name: Adjust auditd/audispd configurations
   lineinfile:
