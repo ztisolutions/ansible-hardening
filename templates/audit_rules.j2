@@ -74,7 +74,7 @@
 -w /etc/gshadow -p wa -k identity
 -w /etc/shadow -p wa -k identity
 -w /etc/opasswd -p wa -k identity
--w /sbin/rmmod-p x -F auid!=4294967295 -k module-change
+-w /sbin/rmmod -p x -F auid!=4294967295 -k module-change
 
 # V-72097
 -a always,exit -F arch=b32 -S chown -F auid>=1000 -F auid!=4294967295 -k perm_mod
