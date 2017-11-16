@@ -35,13 +35,15 @@
 #     - sshd
 #     - V-71861
 #     - V-72225
-- name: V-72225 Login in banner configured in sshd_config
-  lineinfile:
-    dest: "/etc/ssh/sshd_config"
-    line: 'banner /etc/issue'
-    state: present
-    backrefs: yes
-  when:
+
+#
+# - name: V-72225 Login in banner configured in sshd_config
+#   lineinfile:
+#     dest: "/etc/ssh/sshd_config"
+#     line: 'banner /etc/issue'
+#     state: present
+#     backrefs: yes
+#   when:
 
 
 - name: Adjust ssh server configuration based on STIG requirements

@@ -43,6 +43,8 @@ Protocol {{ security_sshd_protocol }}
 # V-72253
 MACs {{security_sshd_allowed_macs }}
 {% if security_sshd_enable_privilege_separation | bool %}
+# V-72259
+GSSAPIAuthentication no
 # V-72265
 UsePrivilegeSeparation sandbox
 {% endif %}
