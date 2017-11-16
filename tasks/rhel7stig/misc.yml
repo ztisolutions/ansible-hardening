@@ -205,6 +205,7 @@
   when:
     - clamav_install_check.stat.exists
     - security_enable_virus_scanner | bool
+  become: true
   tags:
     - misc
     - V-72213
