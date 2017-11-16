@@ -272,3 +272,20 @@
     - auth
     - V-72277
     - V-72279
+- name: Check if GRUB defaults file exists
+  stat:
+    path: "{{ grub_defaults_file }}"
+  register: grub_defaults_file_check
+  check_mode: no
+  tags:
+    - always
+
+- name: V-72245 Date and time of last successful logon upon SSH logon.
+  lineinfile:
+    dest: "/etc/pam.d/sshd"
+    line: 'session required pam_lastlog.so showfailed'
+    state: present
+
+  become: true
+  notify:
+    - update grub config
