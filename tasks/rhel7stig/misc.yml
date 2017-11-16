@@ -15,11 +15,11 @@
 
 - name: V-71863 - The OS must display the Standard Mandatory DoD Notice and Consent Banner before granting local or remote access
   copy:
-    src: ./template/issue
+    src: login_banner.txt
     dest: /etc/issue
     mode: u=rw,g=r,o=r
   become: true
-  
+
 - name: Check autofs service
   command: systemctl status autofs
   register: autofs_check
