@@ -115,8 +115,7 @@
 - name: Ensure that users cannot reuse one of their last 5 passwords
   lineinfile:
     dest: "{{ pam_password_file }}"
-    regexp: '^(password\s+[a-z0-9\=\[\] ]+\s+pam_unix\.so.+?)\s+(?:remember=\d+)?$'
-    line: '\1 remember={{ security_password_remember_password }}'
+    line: 'password sufficient pam_unix.so use_authtok sha512 shadow remember={{ security_password_remember_password }}'
     backrefs: yes
     state: present
   when:

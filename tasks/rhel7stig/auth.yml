@@ -103,6 +103,23 @@
     - V-71943
     - V-71945
 
+- name: Lock accounts after three failed login attempts a 15 minute period
+  blockinfile:
+    dest: "{{ pam_auth_file }}"
+    state: present
+    marker: "# {mark} MANAGED BY ANSIBLE-HARDENING"
+    insertbefore: EOF
+    block: "{{ lookup('template', 'pam_faillock.j2') }}"
+  when:
+    - ansible_pkg_mgr in ['yum', 'zypper']
+    - security_pam_faillock_enable | bool
+  become: true
+  tags:
+    - auth
+    - medium
+    - V-71943
+    - V-71945
+
 # NOTE(mhayden): The unusual regex here ensures that we're omitting any lines
 # that are commented out. Some commented lines may be preprended with spaces,
 # so we need to account for that as well.
