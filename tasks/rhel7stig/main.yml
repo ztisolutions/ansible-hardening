@@ -61,8 +61,10 @@
     - ansible_pkg_mgr == 'yum'
     - security_epel_install_repository | bool
     - security_enable_virus_scanner | bool
+  become: true
   tags:
     - always
+
 
 # Package installations and removals must come first so that configuration
 # changes can be made later.
