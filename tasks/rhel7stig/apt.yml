@@ -115,7 +115,9 @@
   when:
     - ansible_os_family | lower == 'debian'
     - security_rhel7_automatic_package_updates | bool
+  become: true
   tags:
     - packages
     - cat2
     - V-71999
+
