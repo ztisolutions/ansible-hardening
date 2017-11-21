@@ -1,3 +1,4 @@
+git pull
 cp playbook.yaml ../
 cd ..
 ansible-playbook playbook.yaml
