@@ -199,7 +199,7 @@
     - security_enable_virus_scanner | bool
     - security_run_virus_scanner_update | bool
   become: true
-  async: 300
+  async: 500
   poll: 5
   tags:
     - misc
