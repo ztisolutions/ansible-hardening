@@ -90,10 +90,13 @@
   file:
     path: "{{ grub_config_file_boot }}"
     mode: 0644
+  become: true
 
 - name: dconf update
   command: dconf update
+  become: true
 
 - name: reload systemd
   systemd:
     daemon-reload: yes
+  become: true
