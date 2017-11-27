@@ -48,13 +48,11 @@
     - V-71937
 
 - name: Prevent users with blank or null passwords from authenticating (Red Hat)
-  lineinfile:
+  replace:
     dest: "{{ pam_auth_file }}"
-    state: absent
-    regexp: "^({{ item }}.*sufficient.*)nullok(.*)$"
-    line: '\1\2'
+    regexp: "\\snullok"
+    replace: ""
     backup: yes
-    backrefs: yes
   with_items:
     - auth
     - password
