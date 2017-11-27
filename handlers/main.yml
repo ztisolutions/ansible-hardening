@@ -80,6 +80,7 @@
     - security_enable_grub_update | bool
     - grub_update_binary.stat.exists | bool
     - grub_update_binary.stat.executable | bool
+  become: true
   notify:
     - set bootloader file permissions after updating grub config
 
