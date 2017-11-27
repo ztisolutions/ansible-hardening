@@ -299,8 +299,8 @@ shadow_utils_rhel7:
     value: "{{ security_shadow_utils_umask | default('') }}"
     stig_id: V-71995
     ansible_os_family: all
-  - parameter: CREATE_HOME yes
-    value: "{{ security_shadow_utils_create_home | default('') }}"
+  - parameter: CREATE_HOME
+    value: "{{security_shadow_utils_create_home | default('') }}"
     stig_id: V-72013
     ansible_os_family: all
 
