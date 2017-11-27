@@ -35,6 +35,7 @@
     - ansible_os_family | lower == 'redhat'
     - yum_cron_config_check.stat.exists | bool
     - security_rhel7_automatic_package_updates | bool
+  become: true
   tags:
     - packages
     - medium
