@@ -15,67 +15,6 @@
 # Set the auditd failure flag.
 -f {{ security_rhel7_audit_failure_flag }}
 
-#TEST TEST TEST
--a always,exit -F <suid_prog_with_full_path> -F perm=x -F auid>=1000 -F auid!=4294967295 -k setuid/setgid"
--a always,exit -F arch=b32 -S chown -F auid>=1000 -F auid!=4294967295 -k perm_mod
--a always,exit -F arch=b64 -S chown -F auid>=1000 -F auid!=4294967295 -k perm_mod
--a always,exit -F arch=b32 -S fchown -F auid>=1000 -F auid!=4294967295 -k perm_mod
--a always,exit -F arch=b64 -S fchown -F auid>=1000 -F auid!=4294967295 -k perm_mod
--a always,exit -F arch=b32 -S mount -F auid>=1000 -F auid!=4294967295 -k privileged-mount
--a always,exit -F arch=b64 -S mount -F auid>=1000 -F auid!=4294967295 -k privileged-mount
--a always,exit -F arch=b32 -S init_module -k module-change
--a always,exit -F arch=b64 -S init_module -k module-change
--a always,exit -F arch=b32 -S delete_module -k module-change
--a always,exit -F arch=b64 -S delete_module -k module-change
--a always,exit -F arch=b32 -S rename -F perm=x -F auid>=1000 -F auid!=4294967295 -k delete
--a always,exit -F arch=b64 -S rename -F perm=x -F auid>=1000 -F auid!=4294967295 -k delete
--a always,exit -F arch=b32 -S renameat  -F perm=x -F auid>=1000 -F auid!=4294967295 -k delete
--a always,exit -F arch=b64 -S renameat  -F perm=x -F auid>=1000 -F auid!=4294967295 -k delete
--a always,exit -F arch=b32 -S rmdir  -F perm=x -F auid>=1000 -F auid!=4294967295 -k delete
--a always,exit -F arch=b64 -S rmdir  -F perm=x -F auid>=1000 -F auid!=4294967295 -k delete
--a always,exit -F arch=b32 -S unlink -F perm=x -F auid>=1000 -F auid!=4294967295 -k delete
--a always,exit -F arch=b64 -S unlink  -F perm=x -F auid>=1000 -F auid!=4294967295 -k delete
--a always,exit -F arch=b32 -S unlinkat -F perm=x -F auid>=1000 -F auid!=4294967295 -k delete
--a always,exit -F arch=b64 -S unlinkat  -F perm=x -F auid>=1000 -F auid!=4294967295 -k delete
--a always,exit -F arch=b32 -S init_module -k module-change
--a always,exit -F arch=b64 -S init_module -k module-change
--a always,exit -F arch=b32 -S delete_module -k module-change
--a always,exit -F arch=b64 -S delete_module -k module-change
--a always,exit -F arch=b32 -S rename -F perm=x -F auid>=1000 -F auid!=4294967295 -k delete
--a always,exit -F arch=b64 -S rename -F perm=x -F auid>=1000 -F auid!=4294967295 -k delete
--a always,exit -F arch=b32 -S renameat  -F perm=x -F auid>=1000 -F auid!=4294967295 -k delete
--a always,exit -F arch=b64 -S renameat  -F perm=x -F auid>=1000 -F auid!=4294967295 -k delete
--a always,exit -F arch=b32 -S rmdir  -F perm=x -F auid>=1000 -F auid!=4294967295 -k delete
--a always,exit -F arch=b64 -S rmdir  -F perm=x -F auid>=1000 -F auid!=4294967295 -k delete
--a always,exit -F arch=b32 -S unlink -F perm=x -F auid>=1000 -F auid!=4294967295 -k delete
--a always,exit -F arch=b64 -S unlink  -F perm=x -F auid>=1000 -F auid!=4294967295 -k delete
--a always,exit -F arch=b32 -S unlinkat -F perm=x -F auid>=1000 -F auid!=4294967295 -k delete
--a always,exit -F arch=b64 -S unlinkat  -F perm=x -F auid>=1000 -F auid!=4294967295 -k delete
--a always,exit -F path=/usr/sbin/setsebool -F perm=x -F auid>=1000 -F auid!=4294967295 -k privileged-priv_change
--a always,exit -F path=/usr/bin/chcon -F perm=x -F auid>=1000 -F auid!=4294967295 -k privileged-priv_change
--a always,exit -F path=/usr/sbin/restorecon -F perm=x -F auid>=1000 -F auid!=4294967295 -k privileged-priv_change
--a always,exit -F path=/sbin/unix_chkpwd -F perm=x -F auid>=1000 -F auid!=4294967295 -k privileged-passwd
--a always,exit -F path=/usr/bin/gpasswd -F perm=x -F auid>=1000 -F auid!=4294967295 -k privileged-passwd
--a always,exit -F path=/usr/bin/chage -F perm=x -F auid>=1000 -F auid!=4294967295 -k privileged-passwd
--a always,exit -F path=/usr/sbin/userhelper -F perm=x -F auid>=1000 -F auid!=4294967295 -k privileged-passwd
--a always,exit -F path=/bin/su -F perm=x -F auid>=1000 -F auid!=4294967295 -k privileged-priv_change
--a always,exit -F path=/usr/bin/sudo -F perm=x -F auid>=1000 -F auid!=4294967295 -k privileged-priv_change
--a always,exit -F path=/usr/bin/newgrp -F perm=x -F auid>=1000 -F auid!=4294967295 -k privileged-priv_change
--a always,exit -F path=/usr/bin/chsh -F perm=x -F auid>=1000 -F auid!=4294967295 -k privileged-priv_change
--a always,exit -F path=/bin/sudoedit -F perm=x -F auid>=1000 -F auid!=4294967295 -k privileged-priv_change
--a always,exit -F path=/bin/umount -F perm=x -F auid>=1000 -F auid!=4294967295 -k privileged-mount
--a always,exit -F path=/usr/sbin/postdrop -F perm=x -F auid>=1000 -F auid!=4294967295 -k privileged-postfix
--a always,exit -F path=/usr/sbin/postqueue -F perm=x -F auid>=1000 -F auid!=4294967295 -k privileged-postfix
--a always,exit -F path=/usr/libexec/openssh/ssh-keysign -F perm=x -F auid>=1000 -F auid!=4294967295 -k privileged-ssh
--a always,exit -F path=/usr/libexec/pt_chown -F perm=x -F auid>=1000 -F auid!=4294967295 -k privileged_terminal
--a always,exit -F path=/usr/bin/crontab -F perm=x -F auid>=1000 -F auid!=4294967295 -k privileged-cron
--a always,exit -F path=/sbin/pam_timestamp_check -F perm=x -F auid>=1000 -F auid!=4294967295 -k privileged-pam
--w /etc/group -p wa -k identity
--w /etc/gshadow -p wa -k identity
--w /etc/shadow -p wa -k identity
--w /etc/opasswd -p wa -k identity
--w /sbin/rmmod -p x -F auid!=4294967295 -k module-change
-
 # V-72097
 -a always,exit -F arch=b32 -S chown -F auid>=1000 -F auid!=4294967295 -k perm_mod
 -a always,exit -F arch=b64 -S chown -F auid>=1000 -F auid!=4294967295 -k perm_mod
@@ -85,10 +24,6 @@
 -a always,exit -F arch=b64 -S fchown -F auid>=1000 -F auid!=4294967295 -k perm_mod
 
 # V-72099
--a always,exit -F arch=b32 -S lchown -F auid>=1000 -F auid!=4294967295 -k perm_mod
--a always,exit -F arch=b64 -S lchown -F auid>=1000 -F auid!=4294967295 -k perm_mod
-
-# V-72101
 -a always,exit -F arch=b32 -S lchown -F auid>=1000 -F auid!=4294967295 -k perm_mod
 -a always,exit -F arch=b64 -S lchown -F auid>=1000 -F auid!=4294967295 -k perm_mod
 
@@ -165,8 +100,6 @@
 # V-72139
 -a always,exit -F path=/usr/bin/chcon -F perm=x -F auid>=1000 -F auid!=4294967295 -k privileged-priv_change
 
-# V-72141
--a always,exit -F path=/usr/sbin/restorecon -F perm=x -F auid>=1000 -F auid!=4294967295 -k -F privileged-priv_change
 
 # V-72143
 -w /var/log/tallylog -p wa -k logins
@@ -247,9 +180,6 @@
 # V-72191
 -w /sbin/insmod -p x -F auid!=4294967295 -k module-change
 
-# V-72193
--w /sbin/rmmod-p x -F auid!=4294967295 -k module-change
-
 # V-72195
 -w /sbin/modprobe -p x -F auid!=4294967295 -k module-change
 
@@ -257,21 +187,32 @@
 -w /etc/passwd -p wa -k identity
 
 # V-72199
--a always,exit -F arch=b32 -S rename -F perm=x -F auid>=1000 -F auid!=4294967295 -k delete 
+-a always,exit -F arch=b32 -S rename -F perm=x -F auid>=1000 -F auid!=4294967295 -k delete
 -a always,exit -F arch=b64 -S rename -F perm=x -F auid>=1000 -F auid!=4294967295 -k delete
 
 # V-72201
--a always,exit -F arch=b32 -S renameat -F perm=x -F auid>=1000 -F auid!=4294967295 -k delete 
+-a always,exit -F arch=b32 -S renameat -F perm=x -F auid>=1000 -F auid!=4294967295 -k delete
 -a always,exit -F arch=b64 -S renameat -F perm=x -F auid>=1000 -F auid!=4294967295 -k delete
 
 # V-72203
--a always,exit -F arch=b32 -S rmdir -F perm=x -F auid>=1000 -F auid!=4294967295 -k delete 
+-a always,exit -F arch=b32 -S rmdir -F perm=x -F auid>=1000 -F auid!=4294967295 -k delete
 -a always,exit -F arch=b64 -S rmdir -F perm=x -F auid>=1000 -F auid!=4294967295 -k delete
 
 # V-72205
--a always,exit -F arch=b32 -S unlink -F perm=x -F auid>=1000 -F auid!=4294967295 -k delete 
+-a always,exit -F arch=b32 -S unlink -F perm=x -F auid>=1000 -F auid!=4294967295 -k delete
 -a always,exit -F arch=b64 -S unlink -F perm=x -F auid>=1000 -F auid!=4294967295 -k delete
 
 # V-72207
--a always,exit -F arch=b32 -S unlinkat -F perm=x -F auid>=1000 -F auid!=4294967295 -k delete 
+-a always,exit -F arch=b32 -S unlinkat -F perm=x -F auid>=1000 -F auid!=4294967295 -k delete
 -a always,exit -F arch=b64 -S unlinkat -F perm=x -F auid>=1000 -F auid!=4294967295 -k delete
+
+#testing - ramy
+-w /etc/group -p wa -k identity
+-w /etc/shadow -p wa -k identity
+-w /etc/gshadow -p wa -k identity
+-a always,exit -F path=/usr/sbin/restorecon -F perm=x -F auid>=1000 -F auid!=4294967295 -k privileged-priv_change
+-w /sbin/rmmod -p x -F auid!=4294967295 -k module-change
+
+#nessus fix text is missing the security directory for these
+-w /etc/security/opasswd -p wa -k identity
+-w /etc/security/group -p wa -k identity
