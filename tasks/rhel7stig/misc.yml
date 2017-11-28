@@ -287,7 +287,7 @@
     state: started
     enabled: yes
   when:
-    - firewalld_status_check.rc not in [3,4]
+    - firewalld_status_check.rc != 3
     - security_enable_firewalld | bool
   become: true
   tags:
