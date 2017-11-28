@@ -296,7 +296,7 @@
     - V-72273
 
 - name: Limit new TCP connections to 25/minute and allow bursting to 100
-  command: "firewall-cmd --direct --add-rule ipv4 filter IN_public_allow 0 -m tcp -p tcp -m limit --limit {{ security_enable_firewalld_rate_limit_per_minute }}/minute --limit-burst {{ security_enable_firewalld_rate_limit_burst }} --permanent -j ACCEPT"
+  command: "firewall-cmd --direct --permanent --add-rule ipv4 filter IN_public_allow 0 -m tcp -p tcp -m limit --limit {{ security_enable_firewalld_rate_limit_per_minute }}/minute --limit-burst {{ security_enable_firewalld_rate_limit_burst }} -j ACCEPT"
   register: add_rate_limit_firewalld_rule
   changed_when: '"ALREADY_ENABLED" not in add_rate_limit_firewalld_rule.stderr'
   when:
