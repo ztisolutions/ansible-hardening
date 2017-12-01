@@ -1,5 +1,5 @@
 git pull
 cp playbook.yaml ../
 cd ..
-ansible-playbook playbook.yaml
+ansible-playbook -K playbook.yaml
 rm playbook.yaml
