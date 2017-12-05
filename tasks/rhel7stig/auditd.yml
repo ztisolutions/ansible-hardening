@@ -100,7 +100,6 @@
   when:
     - auditd_conf.stat.exists
   become: true
-  create: yes
   notify:
     - generate auditd rules
   tags:
