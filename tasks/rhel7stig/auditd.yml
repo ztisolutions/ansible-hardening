@@ -41,6 +41,7 @@
     - audisp_remote_conf.stat.exists
   notify:
     - restart auditd
+  become: true
   tags:
     - medium
     - auditd
@@ -56,6 +57,7 @@
     - audisp_remote_conf.stat.exists
   notify:
     - restart auditd
+  become: true
   tags:
     - medium
     - auditd
@@ -78,6 +80,7 @@
     - generate auditd rules
   tags:
     - always
+  become: true
 
 - name: Remove old RHEL 6 audit rules file
   file:
@@ -89,6 +92,7 @@
     - generate auditd rules
   tags:
     - always
+  become: true
 
 - name: Deploy rules for auditd based on STIG requirements
   blockinfile:
@@ -251,6 +255,7 @@
     name: auditd
     state: started
     enabled: yes
+  become: true
   when:
     - auditd_conf.stat.exists
   tags:
