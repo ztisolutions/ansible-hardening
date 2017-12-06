@@ -1,0 +1,5 @@
+---
+
+- hosts: linux-4, linux-6, linux-7
+  roles:
+    - cis3
