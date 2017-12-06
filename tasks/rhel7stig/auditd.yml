@@ -97,6 +97,7 @@
     marker: "# {mark} MANAGED BY ANSIBLE-HARDENING"
     insertbefore: EOF
     block: "{{ lookup('template', 'audit_rules.j2') }}"
+    create: true
   when:
     - auditd_conf.stat.exists
   become: true
