@@ -208,6 +208,7 @@
       - rpcbind
       - nfs-server
     when: rpcbind_installed.rc == 0 or nfs_installed.rc == 0
+    failed_when: false
     tags:
       - section2
       - section2.2

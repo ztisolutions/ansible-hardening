@@ -17,6 +17,7 @@
       - 'deb http://security.ubuntu.com/ubuntu xenial-security main restricted'
       - 'deb http://security.ubuntu.com/ubuntu xenial-security universe'
       - 'deb http://security.ubuntu.com/ubuntu xenial-security multiverse'
+    when: false
     tags:
       - section1
       - section1.2

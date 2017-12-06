@@ -1,5 +1,6 @@
 ---
 
-- hosts: linux-4, linux-6, linux-7
+- hosts: all
   roles:
     - cis3
+  become: true
