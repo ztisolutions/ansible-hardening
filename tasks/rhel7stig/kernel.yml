@@ -49,17 +49,6 @@
     - V-72309
     - V-72319
 
-- name: Check kdump service
-  command: systemctl status kdump
-  register: kdump_service_check
-  failed_when: kdump_service_check.rc not in [0,3,4]
-  changed_when: False
-  check_mode: no
-  become: true
-  tags:
-    - kernel
-    - medium
-    - V-72057
 
 - name: V-72057 - Kernel core dumps must be disabled unless needed.
   service:
@@ -67,7 +56,6 @@
     state: stopped
     enabled: no
   when:
-    - kdump_service_check.rc not in [3,4]
     - security_disable_kdump
   become: true
   tags:
