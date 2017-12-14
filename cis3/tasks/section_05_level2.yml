@@ -184,6 +184,7 @@
       - { name: 'DenyUsers' , value: '{{ sshd_deny_users }}' }
       - { name: 'DenyGroups' , value: '{{ sshd_deny_groups }}' }
     notify: restart ssh
+    when: false
     tags:
       - section5
       - section5.2
