@@ -117,7 +117,7 @@
       group: root
       mode: 0600
       content: ''
-      path: "{{ item.name }}"
+      dest: "{{ item.name }}"
       force: no
     with_items:
       - { name: '/etc/cron.allow'}
