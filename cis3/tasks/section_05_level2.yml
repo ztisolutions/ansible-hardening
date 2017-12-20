@@ -195,6 +195,7 @@
   - name: 5.2.14 add allowed users to sshallowusers group
     command: cat /etc/group
     register: group_check
+    when: false
     tags:
       - section5
       - section5.2
@@ -204,7 +205,8 @@
 
   - name: Group doesn't exist then add
     command: groupadd -r "{{ sshd_allow_groups }}"
-    when: group_check.stdout.find('sshusersallow') == -1
+    #when: group_check.stdout.find('sshusersallow') == -1
+    when: false
     register: groupadd
     tags:
       - section5
@@ -218,7 +220,8 @@
     register: group_check2
     command: adduser {{ item }} {{ sshd_allow_groups }}
     with_items: "{{ sshd_allow_users }}"
-    when: groupadd
+    #when: groupadd
+    when: false
     tags:
       - section5
       - section5.2
