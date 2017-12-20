@@ -54,8 +54,9 @@
       - lvl.1.server
       - lvl.1.workstation
       - not.scored
-      
-  - command: find /etc/rsyslog.d -type f
+    
+  - name: Enumerate rsyslog files  
+    command: find /etc/rsyslog.d -type f
     register: rsyslog_files
     changed_when: False
     tags:
@@ -65,21 +66,7 @@
       - lvl.1.server
       - lvl.1.workstation
       
-  - command: grep ^\\$FileCreateMode {{ item }}
-    with_items:
-      - '/etc/rsyslog.conf'
-      - '{{ rsyslog_files.stdout_lines }}'    
-    register: filecreate_exists
-    ignore_errors: True
-    notify: restart rsyslog
-    when: syslog_package == "rsyslog"
-    tags:
-      - section4
-      - section4.2
-      - section4.2.1.3
-      - lvl.1.server
-      - lvl.1.workstation
-      
+     
   - name: 4.2.1.3 Ensure rsyslog default file permissions configured (Scored)
     lineinfile:
       dest: "{{ item }}"
@@ -89,7 +76,7 @@
       - '/etc/rsyslog.conf'
       - '{{ rsyslog_files.stdout_lines }}'
     notify: restart rsyslog
-    when: filecreate_exists == 0 and syslog_package == "rsyslog"
+    when: syslog_package == "rsyslog"
     tags:
       - section4
       - section4.2
