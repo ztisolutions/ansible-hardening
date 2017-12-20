@@ -76,6 +76,9 @@
     lineinfile:
         dest: /etc/default/grub
         line: 'GRUB_CMDLINE_LINUX="audit=1"'
+        regexp: '^GRUB_CMDLINE_LINUX='
+        state: present
+        create: yes
     tags:
       - section4
       - section4.1
