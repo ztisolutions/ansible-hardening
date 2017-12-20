@@ -86,7 +86,6 @@
       owner: root
       group: root
       mode: 0600
-
     tags:
       - section5
       - section5.1
