@@ -16,8 +16,7 @@
       dest: /etc/login.defs
       line: 'PASS_MAX_DAYS 90'
       regexp: '^PASS_MAX_DAYS'
-#    when: pass_max_days.stdout|int > 90
-    when: false
+    when: pass_max_days.stdout|int > 90
     tags:
       - section5
       - section5.4
@@ -41,8 +40,7 @@
       dest: /etc/login.defs
       line: 'PASS_MIN_DAYS 7'
       regexp: '^PASS_MIN_DAYS'
-    #when: pass_min_days.stdout|int < 7
-    when: false
+    when: pass_min_days.stdout|int < 7
     tags:
       - section5
       - section5.4
