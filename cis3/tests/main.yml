@@ -25,7 +25,7 @@ use_apparmor: False
 use_pam_cracklib: True
 
 # The execution is faster without packages upgrade.
-apt_upgrade: False
+apt_upgrade: True
 
 # Modify the kernel behavior to disallow dump of suid binaries
 restrict_core_dumps: False

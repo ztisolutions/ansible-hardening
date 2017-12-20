@@ -4,7 +4,9 @@
     apt:
       update_cache: yes
       cache_valid_time: "{{apt_cache_valid_time}}"
-      upgrade: yes
+      upgrade: dist-upgrade
+      autoremove: yes
+      autoclean: yes
     when: apt_upgrade == True
     tags:
       - section1
