@@ -5,6 +5,7 @@
       dest: /etc/pam.d/su
       line: 'auth            required        pam_wheel.so use_uid'
       state: present
+    when: false
     tags:
       - section5
       - section5.6
