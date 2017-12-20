@@ -93,7 +93,7 @@
       - lvl.1.server
       - lvl.1.workstation
       
-  - name: 5.1.8 Ensure at/cron is restricted to authorized users (Scored)
+  - name: 5.1.8 Ensure at/cron is restricted to authorized users (Scored) 1/2
     file:
       path: "{{ item.name }}"
       owner: root
@@ -103,12 +103,28 @@
     with_items:
       - { name: '/etc/cron.deny' , state: 'absent' }
       - { name: '/etc/at.deny' , state: 'absent' }
-      - { name: '/etc/cron.allow' , state: 'touch' }
-      - { name: '/etc/at.allow' , state: 'touch' }
     tags:
       - section5
       - section5.1
       - section5.1.8
       - lvl.1.server
       - lvl.1.workstation
-      
+
+# Ugly workaround prevents overwriting files that already exist 
+  - name: 5.1.8 Ensure at/cron is restricted to authorized users(Scored) 2/2
+    copy:
+      owner: root
+      group: root
+      mode: 0600
+      content: ''
+      dest: "{{ item.name }}"
+      force: no
+    with_items:
+      - { name: '/etc/cron.allow'}
+      - { name: '/etc/at.allow'}
+    tags:
+      - section5
+      - section5.1
+      - section5.1.8
+      - lvl.1.server
+      - lvl.1.workstation
