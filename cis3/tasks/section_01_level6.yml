@@ -73,7 +73,10 @@
       - lvl.2.workstation
       
   - name: 1.6.2.1 Ensure AppArmor is not disabled in bootloader configuration (Scored)
-    command: sed -i -r 's/apparmor=0//g' /boot/grub/grub.cfg
+    lineinfile:
+      dest: /boot/grub/grub.cfg
+      regexp: '^apparmor\s*=\s*0'
+      state: absent
     when: use_apparmor == True
     notify: update grub
     tags:
