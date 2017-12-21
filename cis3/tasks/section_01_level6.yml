@@ -16,7 +16,7 @@
     apt:
       name: selinux
       state: present
-    when: selinux_installed.rc == 1 and enable_selinux == True and use_apparmor == False
+    when: enable_selinux == True and use_apparmor == False
     tags:
       - section1
       - section1.6
@@ -29,7 +29,7 @@
       dest: /etc/selinux/config
       line: 'SELINUX=enforcing'
       state: present
-    when: selinux_installed.rc == 0 and enable_selinux == True and use_apparmor == False
+    when: enable_selinux == True and use_apparmor == False
     tags:
       - section1
       - section1.6
@@ -42,7 +42,7 @@
       dest: /etc/selinux/config
       line: 'SELINUXTYPE=ubuntu'
       state: present
-    when: selinux_installed.rc == 0 and enable_selinux == True and use_apparmor == False
+    when: enable_selinux == True and use_apparmor == False
     tags:
       - section1
       - section1.6
@@ -52,7 +52,7 @@
       
   - name: 1.6.1.4 Ensure no unconfined daemons exist (Scored)
     shell: ps -eZ | egrep "initrc" | egrep -vw "tr|ps|egrep|bash|awk" | tr ':' ' ' | awk '{print $NF }'
-    when: selinux_installed.rc == 0 and enable_selinux == True and use_apparmor == False
+    when: enable_selinux == True and use_apparmor == False
     tags:
       - section1
       - section1.6
@@ -72,7 +72,8 @@
       - section1.6
       - section1.6.2.1
 
-  - shell : apparmor_status|grep "0 processes are in complain mode"
+  - name: Check AppArmor status of processes 1/2
+    shell : apparmor_status|grep "0 processes are in complain mode"
     register: apparmor_status_complain_output
     failed_when: False
     changed_when: False
@@ -83,7 +84,8 @@
       - lvl.2.server
       - lvl.2.workstation
       
-  - shell : apparmor_status|grep "0 processes are unconfined"
+  - name: Check AppArmor status of processes 2/2
+    shell : apparmor_status|grep "0 processes are unconfined"
     register: apparmor_status_unconfined_output
     failed_when: False
     changed_when: False
