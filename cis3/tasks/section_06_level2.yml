@@ -113,7 +113,7 @@
   - debug: var=home_directories_own.stdout_lines
       
   - name: 6.2.10 Ensure users' dot files are not group or world writable (Scored)
-    scripts: scripts/6.2.10.sh
+    script: scripts/6.2.10.sh
     register: user_dot_files
     tags:
       - section6
