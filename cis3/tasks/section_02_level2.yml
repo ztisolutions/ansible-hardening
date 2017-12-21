@@ -205,24 +205,33 @@
       - section2.2.7
       - lvl.1.server
       - lvl.1.workstation
-      
-  - name: 2.2.7 Ensure NFS and RPC are not enabled (Scored)
+    
+  - name: 2.2.7 Ensure NFS server is not enabled (Scored) 1/2
     service:
-      name: "{{ item }}"
+      name: nfs-server
       state: stopped
       enabled: no
-    with_items:
-      - rpcbind
-      - nfs-server
-    when: rpcbind_installed.rc == 0 or nfs_installed.rc == 0
-    failed_when: false
+    when: nfs_installed.rc ==0
     tags:
       - section2
       - section2.2
       - section2.2.7
       - lvl.1.server
       - lvl.1.workstation
-      
+
+  - name: 2.2.7 Ensure RPC server is not enabled (Scored) 2/2
+    service:
+      name: rpcbind
+      state: stopped
+      enabled: no
+    when: rpcbind_installed.rc == 0 
+    tags:
+      - section2
+      - section2.2
+      - section2.2.7
+      - lvl.1.server
+      - lvl.1.workstation
+
   - command: dpkg-query -s bind9
     register: bind9_installed
     failed_when: False
