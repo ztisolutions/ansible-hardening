@@ -113,6 +113,7 @@
       owner: root
       group: root
       mode: 0700
+    when: system_acounts.stdout != ""
     tags:
       - section5
       - section5.4
@@ -130,13 +131,13 @@
       - lvl.1.server
       - lvl.1.workstation
       
-  - name: prueba
-    file:
+    - file:
       path: /opt/5.4.2.sh
       owner: root
       group: root
       mode: 0700
       state: absent
+    when: system_acounts.stdout != ""
     tags:
       - section5
       - section5.4
