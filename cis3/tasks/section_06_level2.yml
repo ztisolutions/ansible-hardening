@@ -65,6 +65,7 @@
   - name: 6.2.6 Ensure root PATH Integrity (Scored)
     script: scripts/6.2.6.sh
     register: root_path_integrity
+    changed_when: false
     tags:
       - section6
       - section6.2
@@ -78,6 +79,7 @@
   - name: 6.2.7 Ensure all users' home directories exist (Scored)
     script: scripts/6.2.7.sh
     register: home_directories_exist
+    changed_when: false
     tags:
       - section6
       - section6.2
@@ -91,6 +93,7 @@
     script: scripts/6.2.8.sh
     register: home_directories_permissions
     when: modify_user_homes == True
+    changed_when: false
     tags:
       - section6
       - section6.2
@@ -103,6 +106,7 @@
   - name: 6.2.9 Ensure users own their home directories (Scored)
     script: scripts/6.2.9.sh
     register: home_directories_own
+    changed_when: false
     tags:
       - section6
       - section6.2
@@ -115,6 +119,7 @@
   - name: 6.2.10 Ensure users' dot files are not group or world writable (Scored)
     script: scripts/6.2.10.sh
     register: user_dot_files
+    changed_when: false
     tags:
       - section6
       - section6.2
@@ -127,6 +132,7 @@
   - name: 6.2.11 Ensure no users have .forward files (Scored)
     script: scripts/6.2.11.sh
     register: user_forward_files
+    changed_when: false
     tags:
       - section6
       - section6.2
@@ -140,6 +146,7 @@
   - name: 6.2.12 Ensure no users have .netrc files (Scored)
     script: scripts/6.2.12.sh
     register: user_netrc_files
+    changed_when: false
     tags:
       - section6
       - section6.2
@@ -152,6 +159,7 @@
   - name: 6.2.13 Ensure users' .netrc Files are not group or world accessible (Scored)
     script: scripts/6.2.13.sh
     register: user_netrc_files_permissions
+    changed_when: false
     tags:
       - section6
       - section6.2
@@ -164,6 +172,7 @@
   - name: 6.2.14 Ensure no users have .rhosts files (Scored)
     script: scripts/6.2.14.sh
     register: user_rhosts_files
+    changed_when: false
     tags:
       - section6
       - section6.2
@@ -176,6 +185,7 @@
   - name: 6.2.15 Ensure all groups in /etc/passwd exist in /etc/group (Scored)
     script: scripts/6.2.15.sh
     register: check_groups_in_passwd
+    changed_when: false
     tags:
       - section6
       - section6.2
@@ -188,6 +198,7 @@
   - name: 6.2.16 Ensure no duplicate UIDs exist (Scored)
     script: scripts/6.2.16.sh
     register: duplicate_uids
+    changed_when: false
     tags:
       - section6
       - section6.2
@@ -200,6 +211,7 @@
   - name: 6.2.17 Ensure no duplicate GIDs exist (Scored)
     script: scripts/6.2.17.sh
     register: duplicate_gids
+    changed_when: false
     tags:
       - section6
       - section6.2
@@ -212,6 +224,7 @@
   - name: 6.2.18 Ensure no duplicate user names exist (Scored)
     script: scripts/6.2.18.sh
     register: duplicate_users
+    changed_when: false
     tags:
       - section6
       - section6.2
@@ -224,6 +237,7 @@
   - name: 6.2.19 Ensure no duplicate group names exist (Scored)
     script: scripts/6.2.19.sh
     register: duplicate_groups
+    changed_when: false
     tags:
       - section6
       - section6.2
