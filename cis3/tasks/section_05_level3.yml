@@ -57,8 +57,8 @@
   - name: 5.3.3 Ensure password reuse is limited (Scored)
     lineinfile:
       name: /etc/pam.d/common-password
-      regexp: '^password\s+sufficient\s+pam_unix.so'
-      line: 'password sufficient pam_unix.so remember=5'
+      regexp: '^password\s*sufficient\s*pam_unix.so.*remember=5.*$'
+      line: 'password sufficient pam_unix.so remember=5 try_first_pass'
     tags:
       - section5
       - section5.3
