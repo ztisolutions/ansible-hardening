@@ -2,6 +2,7 @@
 
   - shell: dpkg --get-selections | grep -v deinstall | awk '{ print $1 }'
     register: dpkg_output
+    changed_when: false
     tags:
       - section6
       - section6.1
