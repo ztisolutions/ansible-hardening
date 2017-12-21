@@ -248,7 +248,9 @@
       - not.scored
       
   - name: 4.2.4 Ensure permissions on all logfiles are configured (Scored)
-    shell: chmod -R g-wx,o-rwx /var/log/*
+    shell: chmod -R -c g-wx,o-rwx /var/log/*
+    changed_when: logPerm.stdout != ''
+    register: logPerm
     tags:
       - section4
       - section4.2
