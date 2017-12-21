@@ -117,7 +117,6 @@
       dest: /etc/rsyslog.conf
       line: '$ModLoad imtcp'
       state: present
-        - 
     notify: restart rsyslog
     when: set_rsyslog_remote == True and syslog_package == "rsyslog"
     tags:
