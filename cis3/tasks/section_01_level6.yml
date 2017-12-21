@@ -11,21 +11,9 @@
       - section1.6.1.1
       - lvl.2.server
       - lvl.2.workstation
-      
-      
-  - command: dpkg -l selinux
-    register: selinux_installed
-    failed_when: False
-    ignore_errors: True
-    changed_when: False
-    tags:
-      - section1
-      - section1.6
-      - section1.6.1.2
-      - lvl.2.server
-      - lvl.2.workstation
-      
-  - apt:
+         
+  - name: Ensure SELinux is installed
+    apt:
       name: selinux
       state: present
     when: selinux_installed.rc == 1 and enable_selinux == True and use_apparmor == False
