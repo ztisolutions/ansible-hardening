@@ -66,11 +66,24 @@
       - lvl.1.server
       - lvl.1.workstation
       
-  - name: 5.3.4 Ensure password hashing algorithm is SHA-512 (Scored)
+  - name: 5.3.4 Ensure password hashing algorithm is SHA-512 (Scored) 1/2
+    command: grep '^\bpassword\b.*\bpam_unix\.so\b.*\bsha512\b\.*$' /etc/pam.d/common-password
+    register: hashCheck
+    tags:
+      - section5
+      - section5.3
+      - section5.3.3
+      - lvl.1.server
+      - lvl.1.workstation
+
+
+  - name: 5.3.4 Ensure password hashing algorithm is SHA-512 (Scored) 2/2
     lineinfile:
       name: /etc/pam.d/common-password
-      regexp: '^password\s+\S+\s+pam_unix.so'
-      line: 'password sufficient pam_unix.so sha512'
+      regexp: '^\bpassword\b.*\bpam_unix\.so\b.*$'
+      line: 'password        [success=1 default=ignore]      pam_unix.so obscure sha512'
+    when: hashCheck.stdout != ''
+    changedWhen: hashCheck.stdout == ''
     tags:
       - section5
       - section5.3
