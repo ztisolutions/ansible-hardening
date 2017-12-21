@@ -145,10 +145,11 @@
       - lvl.1.server
       - lvl.1.workstation
       
-  - name: 5.4.3 Ensure default group for the root account is GID 0 (Scored)
+  - name: Collect GID of root
     command: grep "^root:" /etc/passwd | cut -f4 -d':'
     register: root_gid
     failed_when: False 
+    changed_when: false
     tags:
       - section5
       - section5.4
@@ -158,7 +159,7 @@
       
   - name: 5.4.3 Ensure default group for the root account is GID 0 (Scored)
     command: usermod -g 0 root
-    when: root_gid !=0
+    when: root_gid.stdout !=0
     tags:
       - section5
       - section5.4
