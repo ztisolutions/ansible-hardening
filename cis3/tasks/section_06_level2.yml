@@ -75,7 +75,7 @@
       - lvl.1.workstation
       
   - name: 6.2.6 Ensure root PATH Integrity (Scored)
-    shell: /opt/6.2.6.sh
+    script: scripts/6.2.6.sh
     register: root_path_integrity
     tags:
       - section6
