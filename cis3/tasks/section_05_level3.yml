@@ -68,6 +68,7 @@
       
   - name: 5.3.4 Ensure password hashing algorithm is SHA-512 (Scored) 1/2
     command: grep '^\bpassword\b.*\bpam_unix\.so\b.*\bsha512\b\.*$' /etc/pam.d/common-password
+    failed_when: false
     register: hashCheck
     tags:
       - section5
@@ -82,8 +83,8 @@
       name: /etc/pam.d/common-password
       regexp: '^\bpassword\b.*\bpam_unix\.so\b.*$'
       line: 'password        [success=1 default=ignore]      pam_unix.so obscure sha512'
-    when: hashCheck.stdout != ''
-    changedWhen: hashCheck.stdout == ''
+    when: hashCheck.rc != 0
+    changed_when: hashCheck.rc == 0
     tags:
       - section5
       - section5.3
