@@ -132,6 +132,7 @@
   - name: 6.2.11 Ensure no users have .forward files (Scored)
     script: scripts/6.2.11.sh
     register: user_forward_files
+    changed_when: false
     tags:
       - section6
       - section6.2
