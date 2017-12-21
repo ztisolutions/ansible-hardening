@@ -111,10 +111,14 @@
       - lvl.1.server
       - lvl.1.workstation
       
-  - command: grep '^$ModLoad imtcp' /etc/rsyslog.conf
-    register: moadloadpresent
-    failed_when: False
-    check_mode: no
+   
+  - name: 4.2.1.5 Ensure remote rsyslog messages are only accepted on designated log hosts. (Not Scored) 1/2
+    lineinfile:
+      dest: /etc/rsyslog.conf
+      line: '$ModLoad imtcp'
+      state: present
+    notify: restart rsyslog
+    when: set_rsyslog_remote == True and syslog_package == "rsyslog"
     tags:
       - section4
       - section4.2
@@ -123,17 +127,17 @@
       - lvl.1.workstation
       - not.scored
       
-  - name: 4.2.1.5 Ensure remote rsyslog messages are only accepted on designated log hosts. (Not Scored)
+  - name: 4.2.1.5 Ensure remote rsyslog messages are only accepted on designated log hosts. (Not Scored) 2/2
     lineinfile:
       dest: /etc/rsyslog.conf
-      regexp: '^#({{ item }})'
-      line: '{{ item }}'
+      regexp: '^\$InputTCPServerRun\s*'
+      line: '$InputTCPServerRun 514'
       state: present
     with_items:
         - '$ModLoad imtcp'
         - '$InputTCPServerRun 514'
     notify: restart rsyslog
-    when: set_rsyslog_remote == True and moadloadpresent.rc == 1 and syslog_package == "rsyslog"
+    when: set_rsyslog_remote == True and syslog_package == "rsyslog"
     tags:
       - section4
       - section4.2
@@ -141,7 +145,7 @@
       - lvl.1.server
       - lvl.1.workstation
       - not.scored
-      
+
   - command: dpkg-query -s syslog-ng
     register: syslognginstalled
     changed_when: False
