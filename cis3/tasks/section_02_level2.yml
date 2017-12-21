@@ -60,7 +60,8 @@
       - section2.2.2
       - lvl.1.server
       
-  - command: dpkg-query -s avahi-daemon
+  - name: Check if Avahi is installed
+    command: dpkg-query -s avahi-daemon
     register: avahi_installed
     failed_when: False
     ignore_errors: True
@@ -85,7 +86,8 @@
       - lvl.1.server
       - lvl.1.workstation
       
-  - command: dpkg-query -s cups-server-common
+  - name: Check if CUPS is installed
+    command: dpkg-query -s cups-server-common
     register: cups_installed
     failed_when: False
     ignore_errors: True
@@ -110,7 +112,8 @@
       - lvl.1.server
       - lvl.2.workstation
       
-  - command: dpkg-query -s isc-dhcp-server
+  - name: Check if DHCP is installed (1/2)
+    command: dpkg-query -s isc-dhcp-server
     register: dhcp_installed
     failed_when: False 
     ignore_errors: True
@@ -122,7 +125,8 @@
       - lvl.1.server
       - lvl.1.workstation
       
-  - command: dpkg-query -s isc-dhcp-server6
+  - name: check if DHCP is installed (2/2)
+    command: dpkg-query -s isc-dhcp-server6
     register: dhcp6_installed
     failed_when: False 
     ignore_errors: True
@@ -150,7 +154,8 @@
       - lvl.1.server
       - lvl.1.workstation
       
-  - command: dpkg-query -s slapd
+  - name: Check if LDAP server is installed
+    command: dpkg-query -s slapd
     register: ldap_installed
     failed_when: False
     ignore_errors: True
@@ -175,7 +180,8 @@
       - lvl.1.server
       - lvl.1.workstation
       
-  - command: dpkg-query -s nfs-kernel-server
+  - name: Check if NFS server is installed
+    command: dpkg-query -s nfs-kernel-server
     register: nfs_installed
     failed_when: False
     ignore_errors: True
@@ -186,8 +192,9 @@
       - section2.2.7
       - lvl.1.server
       - lvl.1.workstation
-      
-  - command: dpkg-query -s rpcbind
+
+  - name: Check if RPC server is installed
+    command: dpkg-query -s rpcbind
     register: rpcbind_installed
     failed_when: False
     ignore_errors: True
