@@ -131,7 +131,7 @@
       - lvl.1.server
       - lvl.1.workstation
       
-    - file:
+  - file:
       path: /opt/5.4.2.sh
       owner: root
       group: root
