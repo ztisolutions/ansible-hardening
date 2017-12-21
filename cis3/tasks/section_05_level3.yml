@@ -54,15 +54,41 @@
       - lvl.1.workstation
       - not.scored
       
-  - name: 5.3.3 & 5.3.4 Ensure password reuse is limited & using SHA-512 hashing algorithm (Scored)
+  - name: 5.3.3 Ensure password reuse is limited (Scored)
     lineinfile:
       name: /etc/pam.d/common-password
-      regexp: '^\bpassword\b.*\bpam_unix\.so\b.*$'
-      line: 'password required pam_unix.so remember=5 try_first_pass obscure sha512 try_first_pass'
+      regexp: '^password\s+sufficient\s+pam_unix.so'
+      line: 'password sufficient pam_unix.so remember=5'
     tags:
       - section5
       - section5.3
       - section5.3.3
+      - lvl.1.server
+      - lvl.1.workstation
+      
+  - name: 5.3.4 Ensure password hashing algorithm is SHA-512 (Scored) 1/2
+    command: grep '^\bpassword\b.*\bpam_unix\.so\b.*\bsha512\b\.*$' /etc/pam.d/common-password
+    failed_when: false
+    register: hashCheck
+    tags:
+      - section5
+      - section5.3
+      - section5.3.3
+      - lvl.1.server
+      - lvl.1.workstation
+
+
+  - name: 5.3.4 Ensure password hashing algorithm is SHA-512 (Scored) 2/2
+    lineinfile:
+      name: /etc/pam.d/common-password
+      regexp: '^\bpassword\b.*\bpam_unix\.so\b.*$'
+      line: 'password        [success=1 default=ignore]      pam_unix.so obscure sha512'
+    when: hashCheck.rc != 0
+    changed_when: hashCheck.rc == 0
+    tags:
+      - section5
+      - section5.3
       - section5.3.4
       - lvl.1.server
       - lvl.1.workstation
+      
