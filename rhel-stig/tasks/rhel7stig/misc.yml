@@ -115,7 +115,7 @@
 - name: V-72209 - The system must send rsyslog output to a log aggregation server.
   lineinfile:
     path: /etc/rsyslog.conf
-    regexp: ^\s*\*\.\*\s*@@\d+\.\d+\.\d+\.\d+:\d+
+    regexp: "^\s*\*\.\*\s*@@\d+\.\d+\.\d+\.\d+:\d+"
     line:  {{'*.*         @@'+security_rsyslog_remote_address}}
   when:
     - security_enable_rsyslog_remote
