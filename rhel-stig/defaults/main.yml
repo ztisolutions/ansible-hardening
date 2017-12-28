@@ -283,6 +283,10 @@ security_login_banner_text: |
   * with identifying information. Disconnect immediately if you are not an     *
   * authorized user of this system.                                            *
   ------------------------------------------------------------------------------
+# Enable sending system logs to remote log server
+security_enable_rsyslog_remote: True                                    # V-72209 
+# Ip address of remote log server
+security_rsyslog_remote_address: '10.71.30.199:544'
 
 ## Packages (packages)
 # Remove packages from the system as required by the STIG. Set any of these
