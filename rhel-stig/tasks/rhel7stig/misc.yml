@@ -116,7 +116,7 @@
   lineinfile:
     path: /etc/rsyslog.conf
     regexp: "^\s*\*\.\*\s*@@\d+\.\d+\.\d+\.\d+:\d+"
-    line:  {{'*.*         @@'+security_rsyslog_remote_address}}
+    line:  "*.*         @@{{security_rsyslog_remote_address}}"
   when:
     - security_enable_rsyslog_remote
   notify: restart rsyslog
