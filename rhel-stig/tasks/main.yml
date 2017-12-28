@@ -52,4 +52,4 @@
     tags:
       - always
 
-  - include: "{{ stig_version }}stig/main.yml"
+  - include_tasks: "{{ stig_version }}stig/main.yml"
