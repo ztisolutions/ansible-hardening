@@ -284,7 +284,6 @@ security_login_banner_text: |
   * authorized user of this system.                                            *
   ------------------------------------------------------------------------------
 
-
 ## Packages (packages)
 # Remove packages from the system as required by the STIG. Set any of these
 # to 'no' to skip their removal.
