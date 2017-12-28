@@ -112,21 +112,14 @@
     - misc
     - V-72065
 
-- name: Check if syslog output is being sent to another server
-  command: 'grep "^[^#].*@" /etc/rsyslog.conf'
-  register: rsyslog_transmit_check
-  changed_when: False
-  failed_when: False
-  check_mode: no
-  tags:
-    - always
-
 - name: V-72209 - The system must send rsyslog output to a log aggregation server.
-  debug:
-    msg: Output from syslog must be sent to another server.
+  lineinfile:
+    path: /etc/rsyslog.conf
+    regexp: ^\s*\*\.\*\s*@@\d+\.\d+\.\d+\.\d+:\d+
+    line:  {{'*.*         @@'+security_rsyslog_remote_address}}
   when:
-    - rsyslog_transmit_check is defined
-    - rsyslog_transmit_check.rc != 0
+    - security_enable_rsyslog_remote
+  notify: restart rsyslog
   tags:
     - medium
     - misc
