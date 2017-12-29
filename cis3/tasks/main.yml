@@ -1,7 +1,4 @@
 ---
-
-  - include_tasks: check_requirements.yml
-
   - include_tasks: section_01.yml
     tags: section01
 
