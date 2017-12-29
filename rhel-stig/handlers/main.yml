@@ -19,6 +19,7 @@
 # since it's a special service. Using the old service scripts is required.
 - name: restart auditd
   command: service auditd restart
+  changed_when: false
   args:
     warn: no
   become: true
@@ -68,6 +69,7 @@
 # Miscellaneous ##############################################################
 - name: generate auditd rules
   command: augenrules --load
+  changed_when: false
   notify: restart auditd
   become: true
 
