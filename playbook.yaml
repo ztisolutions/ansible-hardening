@@ -1,5 +1,16 @@
 ---
 
+
 - hosts: all
+  group_by: key=os_{{ansible_os_family|lower}}
+
+
+- hosts: 
+  - os_debian
   roles:
+    - cis3
+
+- hosts: 
+  - os_redhat
+  roles: 
     - rhel-stig
