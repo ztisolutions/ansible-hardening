@@ -183,6 +183,7 @@ security_shadow_utils_fail_delay: 4                          # V-71951
 # Set a umask for all authenticated users.
 # security_shadow_utils_umask: '077'                         # V-71995
 # Create home directories for new users by default.
+# We need to have "!!str" before to prevent ansible from casting the 'yes' to 'True'
 security_shadow_utils_create_home: !!str 'yes'                       # V-72013
 # How many old user password to remember to prevent password re-use.
 security_password_remember_password: 5                      # V-71933
