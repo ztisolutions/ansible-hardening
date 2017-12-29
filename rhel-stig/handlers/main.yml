@@ -19,6 +19,7 @@
 # since it's a special service. Using the old service scripts is required.
 - name: restart auditd
   command: service auditd restart
+  changed_when: false
   args:
     warn: no
   become: true
@@ -28,11 +29,13 @@
     name: "{{ chrony_service }}"
     state: restarted
   become: true
+  changed_when: false
 
 - name: restart fail2ban
   service:
     name: fail2ban
     state: restarted
+  changed_when: false
 
 - name: restart postfix
   service:
@@ -43,31 +46,37 @@
   service:
     name: rsyslog
     state: restarted
+  changed_when: false
 
 - name: restart samba
   service:
     name: smbd
     state: restarted
+  changed_when: false
 
 - name: restart ssh
   service:
     name: "{{ ssh_service }}"
     state: restarted
   become: true
+  changed_when: false
 
 - name: restart vsftpd
   service:
     name: vsftpd
     state: restarted
+  changed_when: false
 
 - name: restart clamav
   service:
     name: "{{ clamav_service }}"
     state: restarted
+  changed_when: false
 
 # Miscellaneous ##############################################################
 - name: generate auditd rules
   command: augenrules --load
+  changed_when: false
   notify: restart auditd
   become: true
 
