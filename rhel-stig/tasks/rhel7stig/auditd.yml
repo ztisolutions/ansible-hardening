@@ -68,30 +68,9 @@
   tags:
     - always
 
-- name: Remove system default audit.rules file
-  file:
-    path: /etc/audit/rules.d/audit.rules
-    state: absent
-  when:
-    - auditd_conf.stat.exists
-  notify:
-    - generate auditd rules
-  tags:
-    - always
-
-- name: Remove old RHEL 6 audit rules file
-  file:
-    path: /etc/audit/rules.d/audit.rules
-    state: absent
-  when:
-    - auditd_conf.stat.exists
-  notify:
-    - generate auditd rules
-  tags:
-    - always
-
 - name: Deploy rules for auditd based on STIG requirements
   blockinfile:
+    backup: true
     dest: "{{ audit_rules_file }}"
     state: present
     marker: "# {mark} MANAGED BY ANSIBLE-HARDENING"
