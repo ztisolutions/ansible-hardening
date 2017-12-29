@@ -1,0 +1,18 @@
+---
+  - include_tasks: section_01.yml
+    tags: section01
+
+  - include_tasks: section_02.yml
+    tags: section02
+
+  - include_tasks: section_03.yml
+    tags: section03
+
+  - include_tasks: section_04.yml
+    tags: section04
+
+  - include_tasks: section_05.yml
+    tags: section05
+
+  - include_tasks: section_06.yml
+    tags: section06
