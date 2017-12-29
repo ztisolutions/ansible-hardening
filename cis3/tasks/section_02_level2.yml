@@ -444,7 +444,12 @@
       - section2.2.15
       - lvl.1.server
       - lvl.1.workstation
-      
+ 
+  - name: Check if postfix configuration file exists
+    stat:
+      path: /etc/postfix/main.cf
+    register: postfix_config
+
   - name: 2.2.15 Ensure mail transfer agent is configured for local-only mode (Scored)
     lineinfile:
       dest: /etc/postfix/main.cf
@@ -453,6 +458,7 @@
       state: present
       create: no
     notify: restart postfix
+    when: postfix_config.exists
     tags:
       - section2
       - section2.2
