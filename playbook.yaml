@@ -2,7 +2,8 @@
 
 
 - hosts: all
-  group_by: key=os_{{ansible_os_family|lower}}
+  tasks: 
+    - group_by: key=os_{{ansible_os_family|lower}}
 
 
 - hosts: 
