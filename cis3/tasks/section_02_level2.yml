@@ -459,7 +459,7 @@
       state: present
       create: no
     notify: restart postfix
-    when: postfix_config.exists
+    when: postfix_config.stat.exists
     tags:
       - section2
       - section2.2
