@@ -285,7 +285,7 @@ security_login_banner_text: |
   * authorized user of this system.                                            *
   ------------------------------------------------------------------------------
 # Enable sending system logs to remote log server
-security_enable_rsyslog_remote: True                                    # V-72209 
+security_enable_rsyslog_remote: false                                    # V-72209 
 # Ip address of remote log server
 security_rsyslog_remote_address: '192.168.100.10'
 
