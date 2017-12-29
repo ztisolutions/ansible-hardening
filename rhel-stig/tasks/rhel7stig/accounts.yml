@@ -115,7 +115,7 @@
 - name: Ensure that users cannot reuse one of their last 5 passwords
   lineinfile:
     dest: "{{ pam_password_file }}"
-    line: 'password sufficient pam_unix.so use_authtok sha512 shadow remember={{ security_password_remember_password }}'
+    line: 'password sufficient pam_unix.so try_first_pass use_authtok sha512 shadow remember={{ security_password_remember_password }}'
     state: present
   when:
     - security_password_remember_password is defined
@@ -239,7 +239,7 @@
 - name: Use pwquality when passwords are changed or created
   lineinfile:
     dest: /etc/pam.d/passwd
-    line: "password required pam_pwquality.so retry=3"
+    line: "password required pam_pwquality.so try_first_pass retry=3"
     state: present
   when:
     - security_enable_pwquality_password_set | bool

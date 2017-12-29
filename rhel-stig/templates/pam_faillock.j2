@@ -3,4 +3,4 @@ auth required pam_faillock.so preauth silent audit deny={{ security_pam_faillock
 auth [default=die] pam_faillock.so authfail audit deny={{ security_pam_faillock_attempts }} {{ security_pam_faillock_deny_root | bool | ternary('even_deny_root','') }} fail_interval={{ security_pam_faillock_interval }} unlock_time={{ security_pam_faillock_unlock_time }}
 auth sufficient pam_unix.so try_first_pass
 account required pam_faillock.so
-password sufficient pam_unix.so sha512
+password sufficient pam_unix.so sha512 try_first_pass
