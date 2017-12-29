@@ -469,10 +469,10 @@
       
   - name: Check if rsync is installed 
     command: dpkg-query -s rsync
-      register: rsync_installed
-      failed_when: False
-      ignore_errors: True
-      changed_when: False
+    register: rsync_installed
+    failed_when: False
+    ignore_errors: True
+    changed_when: False
     tags:
       - section2
       - section2.2
