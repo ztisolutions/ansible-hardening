@@ -24,7 +24,6 @@
       - section1.5.1
       - lvl.1.server
       - lvl.1.workstation
-      - safe
       
   - name: 1.5.1 Ensure core dumps are restricted (Scored)
     sysctl:
@@ -38,7 +37,6 @@
       - section1.5.1
       - lvl.1.server
       - lvl.1.workstation
-      - safe
       
   - name: 1.5.2 Ensure XD/NX support is enabled (Not Scored)
     shell: 'dmesg | grep NX'
@@ -66,8 +64,7 @@
       - section1.5.3
       - lvl.1.server
       - lvl.1.workstation
-      - unsure
-
+      
   - name: 1.5.4 Ensure prelink is disabled (Scored)
     apt:
       name: prelink
@@ -78,4 +75,4 @@
       - section1.5.4
       - lvl.1.server
       - lvl.1.workstation
-      - unsure
+      

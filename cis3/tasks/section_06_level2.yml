@@ -12,7 +12,6 @@
       - section6.2.1
       - lvl.1.server
       - lvl.1.workstation
-      - safe
       
   - name: 6.2.2 Ensure no legacy "+" entries exist in /etc/passwd (Scored)
     command: grep '^+:' /etc/passwd
@@ -25,7 +24,6 @@
       - section6.2.2
       - lvl.1.server
       - lvl.1.workstation
-      - safe
       
   - name: 6.2.3 Ensure no legacy "+" entries exist in /etc/shadow (Scored)
     command: grep '^+:' /etc/shadow
@@ -38,7 +36,6 @@
       - section6.2.3
       - lvl.1.server
       - lvl.1.workstation
-      - safe
       
   - name: 6.2.4 Ensure no legacy "+" entries exist in /etc/group (Scored)
     command: grep '^+:' /etc/group
@@ -51,7 +48,6 @@
       - section6.2.4
       - lvl.1.server
       - lvl.1.workstation
-      - safe
       
   - name: 6.2.5 Ensure root is the only UID 0 account (Scored)
     command: awk -F':' '($3 == 0) { print $1 }' /etc/passwd
@@ -64,7 +60,6 @@
       - section6.2.5
       - lvl.1.server
       - lvl.1.workstation
-      - safe
       
       
   - name: 6.2.6 Ensure root PATH Integrity (Scored)
@@ -77,10 +72,8 @@
       - section6.2.6
       - lvl.1.server
       - lvl.1.workstation
-      - safe
       
   - debug: var=root_path_integrity.stdout_lines
-    tags: safe
 
       
   - name: 6.2.7 Ensure all users' home directories exist (Scored)
@@ -93,11 +86,9 @@
       - section6.2.7
       - lvl.1.server
       - lvl.1.workstation
-      - safe
       
   - debug: var=home_directories_exist.stdout_lines
-    tags: safe
-
+      
   - name: 6.2.8 Ensure users' home directories permissions are 750 or more restrictive (Scored)
     script: scripts/6.2.8.sh
     register: home_directories_permissions
@@ -109,10 +100,8 @@
       - section6.2.8
       - lvl.1.server
       - lvl.1.workstation
-      - safe
       
   - debug: var=home_directories_permissions.stdout_lines
-    tags: safe
       
   - name: 6.2.9 Ensure users own their home directories (Scored)
     script: scripts/6.2.9.sh
@@ -126,8 +115,7 @@
       - lvl.1.workstation
       
   - debug: var=home_directories_own.stdout_lines
-    tags: safe
-  
+      
   - name: 6.2.10 Ensure users' dot files are not group or world writable (Scored)
     script: scripts/6.2.10.sh
     register: user_dot_files
@@ -138,10 +126,8 @@
       - section6.2.10
       - lvl.1.server
       - lvl.1.workstation
-      - safe
       
   - debug: var=user_dot_files.stdout_lines
-    tags: safe
       
   - name: 6.2.11 Ensure no users have .forward files (Scored)
     script: scripts/6.2.11.sh
@@ -153,10 +139,8 @@
       - section6.2.11
       - lvl.1.server
       - lvl.1.workstation
-      - safe
       
   - debug: var=user_forward_files.stdout_lines
-    tags: safe
 
       
   - name: 6.2.12 Ensure no users have .netrc files (Scored)
@@ -169,10 +153,8 @@
       - section6.2.12
       - lvl.1.server
       - lvl.1.workstation
-      - safe
       
   - debug: var=user_netrc_files.stdout_lines
-    tags: safe
      
   - name: 6.2.13 Ensure users' .netrc Files are not group or world accessible (Scored)
     script: scripts/6.2.13.sh
@@ -184,10 +166,8 @@
       - section6.2.13
       - lvl.1.server
       - lvl.1.workstation
-      - safe
       
   - debug: var=user_netrc_files_permissions.stdout_lines
-    tags: safe
       
   - name: 6.2.14 Ensure no users have .rhosts files (Scored)
     script: scripts/6.2.14.sh
@@ -199,10 +179,8 @@
       - section6.2.14
       - lvl.1.server
       - lvl.1.workstation
-      - safe
       
   - debug: var=user_rhosts_files.stdout_lines
-    tags: safe
       
   - name: 6.2.15 Ensure all groups in /etc/passwd exist in /etc/group (Scored)
     script: scripts/6.2.15.sh
@@ -214,10 +192,8 @@
       - section6.2.15
       - lvl.1.server
       - lvl.1.workstation
-      - safe
       
   - debug: var=check_groups_in_passwd.stdout_lines
-    tags: safe
       
   - name: 6.2.16 Ensure no duplicate UIDs exist (Scored)
     script: scripts/6.2.16.sh
@@ -229,10 +205,8 @@
       - section6.2.16
       - lvl.1.server
       - lvl.1.workstation
-      - safe
       
   - debug: var=duplicate_uids.stdout_lines
-    tags: safe
 
   - name: 6.2.17 Ensure no duplicate GIDs exist (Scored)
     script: scripts/6.2.17.sh
@@ -244,10 +218,8 @@
       - section6.2.17
       - lvl.1.server
       - lvl.1.workstation
-      - safe
       
   - debug: var=duplicate_gids.stdout_lines
-    tags: safe
       
   - name: 6.2.18 Ensure no duplicate user names exist (Scored)
     script: scripts/6.2.18.sh
@@ -259,10 +231,8 @@
       - section6.2.18
       - lvl.1.server
       - lvl.1.workstation
-      - safe
       
   - debug: var=duplicate_users.stdout_lines
-    tags: safe
       
   - name: 6.2.19 Ensure no duplicate group names exist (Scored)
     script: scripts/6.2.19.sh
@@ -274,10 +244,8 @@
       - section6.2.19
       - lvl.1.server
       - lvl.1.workstation
-      - safe
-
+      
   - debug: var=duplicate_groups.stdout_lines
-    tags: safe
       
   - name: 6.2.20 Ensure shadow group is empty (Scored)
     shell: grep '^shadow' /etc/group | cut -f4 -d':'
@@ -290,5 +258,4 @@
       - section6.2.20
       - lvl.1.server
       - lvl.1.workstation
-      - safe
       

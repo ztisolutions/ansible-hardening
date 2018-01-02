@@ -12,7 +12,6 @@
       - section1.4.1
       - lvl.1.server
       - lvl.1.workstation
-      - unsure
       
   - command: grep "^password" /boot/grub/grub.cfg
     register: boot_password
