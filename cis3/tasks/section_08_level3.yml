@@ -5,7 +5,7 @@
       backup:   true
       minute:   0
       hour:     5
-      day:      *
+      day:      '*'
       user:     root
       name: 'Check file Integrity'
       state: present
