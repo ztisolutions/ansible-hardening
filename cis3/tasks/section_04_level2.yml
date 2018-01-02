@@ -255,6 +255,8 @@
     shell: chmod -R -c g-wx,o-rwx /var/log/*
     changed_when: logPerm.stdout != ''
     register: logPerm
+    args:
+      warn: false
     tags:
       - section4
       - section4.2
