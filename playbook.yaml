@@ -4,8 +4,6 @@
 - hosts: all
   tasks: 
     - group_by: key=os_{{ansible_os_family|lower}}
-  tags:
-    - safe
 # Run this role against Debian based hosts
 - hosts: 
   - os_debian
