@@ -51,4 +51,3 @@
     - security_packages_apply_updates
   tags:
     - packages
-
