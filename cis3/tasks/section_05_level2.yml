@@ -216,8 +216,6 @@
       - lvl.1.workstation
 
   - name: Check SSH group and add users
-    command: cat /etc/group
-    register: group_check2
     command: adduser {{ item }} {{ sshd_allow_groups }}
     with_items: "{{ sshd_allow_users }}"
     #when: groupadd
