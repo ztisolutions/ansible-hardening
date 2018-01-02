@@ -10,6 +10,7 @@
       - section4.2.3
       - lvl.1.server
       - lvl.1.workstation
+      - safe
       
   - name: 4.2.1.1 Ensure rsyslog Service is enabled (Scored)
     service:
@@ -23,6 +24,7 @@
       - section4.2.1.1
       - lvl.1.server
       - lvl.1.workstation
+      - safe
       
   - name: 4.2.1.2 Ensure logging is configured (Not Scored)
     lineinfile:
@@ -54,6 +56,7 @@
       - lvl.1.server
       - lvl.1.workstation
       - not.scored
+      - safe
     
   - name: Enumerate rsyslog files  
     command: find /etc/rsyslog.d -type f
@@ -157,6 +160,7 @@
       - section4.2.2.1
       - lvl.1.server
       - lvl.1.workstation
+      - safe
       
   - name: 4.2.2.1 Ensure syslog-ng service is enabled (Scored)
     service:
@@ -169,6 +173,7 @@
       - section4.2.2.1
       - lvl.1.server
       - lvl.1.workstation
+      - safe
       
   - name: 4.2.2.2 Ensure logging is configured (Not Scored)
     lineinfile:
@@ -203,6 +208,7 @@
       - lvl.1.server
       - lvl.1.workstation
       - not.scored
+      - safe
       
   - name: 4.2.2.3 Ensure syslog-ng default file permissions configured (Scored)
     lineinfile:
@@ -217,6 +223,7 @@
       - section4.2.2.3
       - lvl.1.server
       - lvl.1.workstation
+      - safe
       
   - name: 4.2.2.4 Ensure syslog-ng is configured to send logs to a remote log host (Scored)
     lineinfile:
