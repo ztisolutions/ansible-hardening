@@ -103,3 +103,7 @@ modify_user_homes: True
 # Section 06 Level 5
 # Default ntp server for when none-already exists.
 ntp_server: 192.168.112.1
+
+# Section 08 Level 2
+# Enable cronjob that runs 'aide --check' at 0500 every day
+enable_cronjob_file_integrity: true
