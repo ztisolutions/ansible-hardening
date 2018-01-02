@@ -10,7 +10,6 @@
       - lvl.2.server
       - lvl.2.workstation
       - not.scored
-      - safe
       
   - name: 6.1.1 Audit system file permissions (Not Scored) 
     shell: dpkg --verify {{ item }}
@@ -23,7 +22,6 @@
       - lvl.2.server
       - lvl.2.workstation
       - not.scored
-      - safe
       
   - name: 6.1.2 Ensure permissions on /etc/passwd are configured (Scored)
     file:
@@ -141,7 +139,6 @@
       - section6.1.10
       - lvl.1.server
       - lvl.1.workstation
-      - safe
       
   - name: 6.1.10 Ensure no world writable files exist (Scored)
     debug: "{{ item }}"
@@ -152,7 +149,6 @@
       - section6.1.10
       - lvl.1.server
       - lvl.1.workstation
-      - safe
       
   - name: 6.1.11 Ensure no unowned files or directories exist (Scored)
     shell: df --local -P | awk {'if (NR!=1) print $6'} | xargs -I '{}' find '{}' -xdev -nouser -ls
@@ -166,7 +162,6 @@
       - section6.1.11
       - lvl.1.server
       - lvl.1.workstation
-      - safe
       
   - name: 6.1.11 Ensure no unowned files or directories exist (Scored)
     debug: "{{ item }}"
@@ -177,7 +172,6 @@
       - section6.1.11
       - lvl.1.server
       - lvl.1.workstation
-      - safe
       
   - name: 6.1.12 Ensure no ungrouped files or directories exist (Scored)
     shell: df --local -P | awk {'if (NR!=1) print $6'} | xargs -I '{}' find '{}' -xdev -nogroup -ls
@@ -191,7 +185,6 @@
       - section6.1.12
       - lvl.1.server
       - lvl.1.workstation
-      - safe
       
   - name: 6.1.12 Ensure no ungrouped files or directories exist (Scored)
     debug: "{{ item }}"
@@ -202,7 +195,6 @@
       - section6.1.12
       - lvl.1.server
       - lvl.1.workstation
-      - safe
       
   - shell: df --local -P | awk {'if (NR!=1) print $6'} | xargs -I '{}' find '{}' -xdev -type f -perm -4000 -print
     changed_when: False
@@ -216,7 +208,6 @@
       - lvl.1.server
       - lvl.1.workstation
       - not.scored
-      - safe
       
   - name: 6.1.13 Audit SUID executables (Not Scored)
     debug:
@@ -229,7 +220,6 @@
       - lvl.1.server
       - lvl.1.workstation
       - not.scored
-      - safe
       
   - shell: df --local -P | awk {'if (NR!=1) print $6'} | xargs -I '{}' find '{}' -xdev -type f -perm -2000 -print
     changed_when: False
@@ -243,7 +233,6 @@
       - lvl.1.server
       - lvl.1.workstation
       - not.scored
-      - safe
       
   - name: 6.1.14 Audit SGID executables (Not Scored)
     debug:
@@ -256,5 +245,4 @@
       - lvl.1.server
       - lvl.1.workstation
       - not.scored
-      - safe
       

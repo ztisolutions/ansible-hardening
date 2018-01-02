@@ -14,7 +14,6 @@
       - section5.2.1
       - lvl.1.server
       - lvl.1.workstation
-      - safe
       
   - name: 5.2.2 Ensure SSH Protocol is set to 2 (Scored)
     lineinfile:
@@ -41,7 +40,6 @@
       - section5.2.3
       - lvl.1.server
       - lvl.1.workstation
-      - safe
       
   - name: 5.2.4 Ensure SSH X11 forwarding is disabled (Scored)
     lineinfile:
