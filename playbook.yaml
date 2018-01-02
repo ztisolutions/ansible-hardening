@@ -9,13 +9,8 @@
   - os_debian
   roles:
     - cis3
-  args:
-    warn: false
-
 # Run  this roles against Redhat based hosts
 - hosts: 
   - os_redhat
   roles: 
     - rhel-stig
-  args: 
-    warn: false
