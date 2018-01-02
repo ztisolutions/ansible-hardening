@@ -1,10 +1,11 @@
 ---
-
+# Displaying info safe, but changing perms unsafe
 - include_tasks: section_06_level1.yml
   tags:
   - section06
   - level1
-
+  - mixed
+# Just displays info, OK
 - include_tasks: section_06_level2.yml
   tags:
   - section06

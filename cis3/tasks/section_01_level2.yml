@@ -25,6 +25,7 @@
       - lvl.1.server
       - lvl.1.workstation
       - not.scored
+      - unsafe 
       
   - name: 1.2.2 Ensure GPG keys are configured (Not Scored)
     lineinfile:
@@ -39,4 +40,5 @@
       - lvl.1.server
       - lvl.1.workstation
       - not.scored
+      - unsafe 
       

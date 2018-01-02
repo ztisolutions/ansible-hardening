@@ -1,16 +1,19 @@
 ---
-
+# enabling auditing is ok, locking system not OK
   - include_tasks: section_04_level1.yml
     tags:
       - section04
       - level1
-
+      - mixed 
+# logs are ok, changing permissions of log files may be bad idea
   - include_tasks: section_04_level2.yml
     tags:
       - section04
       - level2
-
+      - mixed
+# logrotate may be bad idea for production      
   - include_tasks: section_04_level3.yml
     tags:
       - section04
       - level3
+      - unsafe 

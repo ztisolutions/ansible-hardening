@@ -4,38 +4,44 @@
     tags:
       - section01
       - level1
+      - unsafe 
 
   - include_tasks: section_01_level2.yml
     tags:
       - section01
       - level2
-
+      - unsafe 
+# Stuff relating to AIDE, OK
   - include_tasks: section_01_level3.yml
     tags:
       - section01
       - level3
-
+# Has one thing related to grub perms, only that line OK
   - include_tasks: section_01_level4.yml
     tags:
       - section01
       - level4
-
+      - mixed
+# keep stuff related to coredumps
   - include_tasks: section_01_level5.yml
     tags:
       - section01
       - level5
-
+      - mixed
+# Apparmor and SELinux are not safe for prod
   - include_tasks: section_01_level6.yml
     tags:
       - section01
       - level6
-
+      - unsafe 
+# Stuff with banners OK
   - include_tasks: section_01_level7.yml
     tags:
       - section01
       - level7
-
+# Updating packagaes on prod not safe
   - include_tasks: section_01_level8.yml
     tags:
       - section01
       - level8
+      - unsafe 

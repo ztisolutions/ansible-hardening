@@ -65,6 +65,7 @@
       - section4.2.1.3
       - lvl.1.server
       - lvl.1.workstation
+      - unsafe 
       
      
   - name: 4.2.1.3 Ensure rsyslog default file permissions configured (Scored)
@@ -83,7 +84,9 @@
       - section4.2.1.3
       - lvl.1.server
       - lvl.1.workstation
-      
+      - unsafe 
+ 
+  # Remote logging may be OK on production, but will likely need additional configuration    
   - command: grep "^*.*[^I][^I]*@" /etc/rsyslog.conf
     register: remoteloghost
     changed_when: False
@@ -95,6 +98,7 @@
       - section4.2.1.4
       - lvl.1.server
       - lvl.1.workstation
+      - unsafe 
       
   - name: 4.2.1.4 Ensure rsyslog is configured to send logs to a remote log host (Scored)
     lineinfile:
@@ -110,6 +114,7 @@
       - section4.2.1.4
       - lvl.1.server
       - lvl.1.workstation
+      - unsafe 
       
    
   - name: 4.2.1.5 Ensure remote rsyslog messages are only accepted on designated log hosts. (Not Scored) 1/2
@@ -126,6 +131,7 @@
       - lvl.1.server
       - lvl.1.workstation
       - not.scored
+      - unsafe 
       
   - name: 4.2.1.5 Ensure remote rsyslog messages are only accepted on designated log hosts. (Not Scored) 2/2
     lineinfile:
@@ -145,6 +151,7 @@
       - lvl.1.server
       - lvl.1.workstation
       - not.scored
+      - unsafe 
 
   - command: dpkg-query -s syslog-ng
     register: syslognginstalled
@@ -217,6 +224,7 @@
       - section4.2.2.3
       - lvl.1.server
       - lvl.1.workstation
+      - unsafe 
       
   - name: 4.2.2.4 Ensure syslog-ng is configured to send logs to a remote log host (Scored)
     lineinfile:
@@ -231,6 +239,7 @@
       - section4.2.2.4
       - lvl.1.server
       - lvl.1.workstation
+      - unsafe 
       
   - name: 4.2.2.5 Ensure remote syslog-ng messages are only accepted on designated log hosts (Not Scored)
     lineinfile:
@@ -250,6 +259,7 @@
       - lvl.1.server
       - lvl.1.workstation
       - not.scored
+      - unsafe 
       
   - name: 4.2.4 Ensure permissions on all logfiles are configured (Scored)
     shell: chmod -R -c g-wx,o-rwx /var/log/*
@@ -263,4 +273,5 @@
       - section4.2.4
       - lvl.1.server
       - lvl.1.workstation
+      - unsafe 
       

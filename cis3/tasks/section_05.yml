@@ -1,32 +1,37 @@
 ---
-
+# Cron restrictions may break things
 - include_tasks: section_05_level1.yml
   tags:
   - section05
   - level1
-
+  - unsafe 
+# Banners and log changes are ok, other restrictions may break things
 - include_tasks: section_05_level2.yml
   tags:
   - section05
   - level2
-
+  - mixed
+# PAM changes on production are dangerous 
 - include_tasks: section_05_level3.yml
   tags:
   - section05
   - level3
-
+  - unsafe 
+# login.defs changes and user changes 
 - include_tasks: section_05_level4.yml
   tags:
   - section05
   - level4
+  - unsafe 
 
 #This makes no changes and only outputs a debug message to check the file if it exists.  And it currently doesn't work.
 # - include_tasks: section_05_level5.yml
 #   tags:
 #   - section05
 #   - level5
-
+# changes to access dangerous on production
 - include_tasks: section_05_level6.yml
   tags:
   - section05
   - level6
+  - unsafe 
