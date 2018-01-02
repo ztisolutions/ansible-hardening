@@ -12,7 +12,6 @@
     name: 'Check file Integrity'
     state: present
     job:  '/usr/sbin/aide --check'
-  
   tags:
       - section8
       - section8.3
