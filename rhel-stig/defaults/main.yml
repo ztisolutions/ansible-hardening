@@ -303,6 +303,8 @@ security_package_clean_on_remove: yes                         # V-71987
 security_rhel7_automatic_package_updates: yes                 # V-71999
 # Install packages for multi-factor authentication.
 security_install_multifactor_auth_packages: yes              # V-72417
+# Apply security updates
+security_packages_apply_updates: yes
 
 ## RPM (rpm)
 # Enable GPG checks for packages and repository data.

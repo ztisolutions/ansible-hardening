@@ -40,3 +40,15 @@
     - packages
     - medium
     - V-71999
+
+- name: Apply package security updates (yum)
+  yum:
+    name:     '*'
+    state:    latest
+    security: yes
+  when:
+    - ansible_os_family | lower == 'redhat'
+    - security_packages_apply_updates
+  tags:
+    - packages
+
