@@ -47,6 +47,7 @@
       - section3.2.4
       - lvl.1.server
       - lvl.1.workstation
+      - safe
       
   - name: 3.2.5 Ensure broadcast ICMP requests are ignored (Scored)
     sysctl:
@@ -71,6 +72,7 @@
       - section3.2.6
       - lvl.1.server
       - lvl.1.workstation
+      - safe
       
   - name: 3.2.7 Ensure Reverse Path Filtering is enabled (Scored)
     sysctl:
