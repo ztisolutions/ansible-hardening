@@ -4,10 +4,7 @@
     backup:   true
     minute:   0
     hour:     5
-    day:      '*'
-    weekday:  '*'
-    week:     '*'
-    month:    '*'
+    day:      *
     user:     root
     name: 'Check file Integrity'
     state: present
