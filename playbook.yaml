@@ -2,15 +2,15 @@
 #
 # Group our hosts by os family (debian or redhat)
 - hosts: all
-  tasks: 
+  tasks:
     - group_by: key=os_{{ansible_os_family|lower}}
 # Run this role against Debian based hosts
-- hosts: 
+- hosts:
   - os_debian
   roles:
     - cis3
 # Run  this roles against Redhat based hosts
-- hosts: 
+- hosts:
   - os_redhat
-  roles: 
+  roles:
     - rhel-stig
