@@ -46,7 +46,7 @@
       name: /etc/pam.d/common-auth
       regexp: 'pam_tally2'
       line: 'auth required pam_tally2.so onerr=fail audit silent deny=5 unlock_time=900'
-    when: ansible_distribution != 'Debian'      # Need to figure out why this module is breaking login on Debian
+    when: false      # Need to figure out why this module is breaking login on Debian
     tags:
       - section5
       - section5.3
