@@ -2,6 +2,7 @@
 
   - name: 1.7.1.1 Ensure message of the day is configured properly (Scored)
     lineinfile:
+      backup: yes
       dest: /etc/motd
       create: yes
       line: 'Authorized uses only. All activity may be monitored and reported.'
@@ -94,6 +95,7 @@
       
   - name: 1.7.2 Ensure GDM login banner is configured (Scored)
     lineinfile:
+      backup: yes
       dest: /etc/dconf/profile/gdm
       regexp: '{{item.regexp}}'
     with_items:
@@ -110,6 +112,7 @@
       
   - name: 1.7.2 Ensure GDM login banner is configured (Scored)
     lineinfile:
+      backup: yes
       dest: /etc/dconf/db/gdm.d/01-banner-message
       create: yes
       regexp: "{{ item.regexp }}"

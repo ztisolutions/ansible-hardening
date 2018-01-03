@@ -26,6 +26,7 @@
       
   - name: 4.2.1.2 Ensure logging is configured (Not Scored)
     lineinfile:
+        backup: yes
         dest: /etc/rsyslog.conf
         line: '{{ item }}'
         insertafter: EOF
@@ -180,6 +181,7 @@
   - name: 4.2.2.2 Ensure logging is configured (Not Scored)
     lineinfile:
         dest: /etc/syslog-ng/syslog-ng.conf
+        backup: yes
         line: '{{ item }}'
         insertafter: EOF
     with_items:

@@ -14,6 +14,7 @@
       
   - name: 4.1.1.1 Ensure audit log storage size is configured (Scored)
     lineinfile: 
+        backup: yes
         dest: /etc/audit/auditd.conf
         line: 'max_log_file = {{max_log_file_auditd}}'
         state: present
@@ -77,6 +78,7 @@
       
   - name: 4.1.3 Ensure auditing for processes that start prior to auditd is enabled (Scored)
     lineinfile:
+        backup: yes
         dest: /etc/default/grub
         line: 'GRUB_CMDLINE_LINUX="audit=1"'
         regexp: '^GRUB_CMDLINE_LINUX='
@@ -91,6 +93,7 @@
       
   - name: 4.1.4 Ensure events that modify date and time information are collected (Scored)
     lineinfile: 
+      backup: yes
       dest: /etc/audit/audit.rules
       line: ' {{ item }} '
       state: present
