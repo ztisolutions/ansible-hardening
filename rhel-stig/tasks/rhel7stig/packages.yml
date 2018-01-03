@@ -20,6 +20,7 @@
   with_items:
     - "{{ stig_packages_rhel7 | selectattr('enabled') | map(attribute='state') | unique | list }}"
   become: true
+  register: packages_changed
   tags:
     - cat1
     - auth
@@ -34,3 +35,22 @@
     - V-72233
     - V-72301
     - V-72307
+    - unsafe
+
+# Hack that allows us to only install "safe" packages when we skip unsafe
+- name: Add 'Safe' Packages based on some STIG requirements
+  package:
+    name: "{{ item }}"  
+    state: present
+  with_items:
+    - audispd-plugins
+    - audit
+    - aide
+    - screen
+  when: packages_changed is undefined
+  tags:
+    - cat1
+    - auth
+    - packages
+    - services
+    
