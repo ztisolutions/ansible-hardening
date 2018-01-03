@@ -19,6 +19,9 @@
     dest: /etc/issue
     mode: u=rw,g=r,o=r
   become: true
+  tags:
+    - medium
+    - V-71863
 
 - name: Check autofs service
   command: systemctl status autofs
