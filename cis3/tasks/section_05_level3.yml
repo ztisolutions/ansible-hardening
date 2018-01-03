@@ -41,12 +41,11 @@
       - lvl.1.server
       - lvl.1.workstation
       
-  - name: 5.3.2 Ensure lockout for failed password attempts is configured (Not Scored)
+  - name: 5.3.2 Ensure lockout for failed password attempts is configured (Not Scored) (1/2)
     lineinfile:
       name: /etc/pam.d/common-auth
       regexp: 'pam_tally2'
-      line: 'auth required pam_tally2.so onerr=fail audit silent deny=5 unlock_time=900'
-    when: false      # Need to figure out why this module is breaking login on Debian
+      line: 'auth required pam_tally2.so onerr=fail audit silent deny=5 unlock_time=900'     # Need to figure out why this module is breaking login on Debian
     tags:
       - section5
       - section5.3
@@ -54,7 +53,20 @@
       - lvl.1.server
       - lvl.1.workstation
       - not.scored
-      
+
+  - name: 5.3.2 Ensure lockout for failed password attempts is configured (Not Scored) (2/2)
+    lineinfile:
+      name: /etc/pam.d/common-account
+      regexp: pam_tally2
+      line: 'account     required      pam_tally2.so'
+    tags:
+      - section5
+      - section5.3
+      - section5.3.2
+      - lvl.1.server
+      - lvl.1.workstation
+      - not.scored
+
   - name: 5.3.3 Ensure password reuse is limited (Scored)
     lineinfile:
       name: /etc/pam.d/common-password
