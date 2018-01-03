@@ -21,3 +21,5 @@
     apt:
       name: pam_cracklib
       state: present
+    tags:
+      - section8 
