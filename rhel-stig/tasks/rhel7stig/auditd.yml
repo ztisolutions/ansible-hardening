@@ -45,6 +45,7 @@
     - medium
     - auditd
     - V-72083
+    - unsafe
 
 - name: V-72085 - The operating system must encrypt the transfer of audit records off-loaded onto a different system or media from the system being audited
   lineinfile:
@@ -60,7 +61,8 @@
     - medium
     - auditd
     - V-72085
-
+    - unsafe
+    
 - name: Get valid system architectures for audit rules
   set_fact:
     auditd_architectures: "{{ (ansible_architecture == 'ppc64le') | ternary(['ppc64'], ['b32', 'b64']) }}"

@@ -29,6 +29,7 @@
     - auth
     - medium
     - V-71951
+    - unsafe
 
 - name: Prevent users with blank or null passwords from authenticating (Debian/Ubuntu)
   lineinfile:
@@ -46,6 +47,7 @@
     - auth
     - high
     - V-71937
+    - unsafe
 
 - name: Prevent users with blank or null passwords from authenticating (Red Hat)
   replace:
@@ -64,6 +66,7 @@
     - auth
     - high
     - V-71937
+    - unsafe
 
 - name: Prevent users with blank or null passwords from authenticating (SUSE)
   lineinfile:
@@ -83,6 +86,7 @@
     - auth
     - high
     - V-71937
+    - unsafe
 
 - name: Lock accounts after three failed login attempts a 15 minute period
   blockinfile:
@@ -100,6 +104,7 @@
     - medium
     - V-71943
     - V-71945
+    - unsafe
 
 - name: Lock accounts after three failed login attempts a 15 minute period
   blockinfile:
@@ -117,6 +122,7 @@
     - medium
     - V-71943
     - V-71945
+    - unsafe
 
 # NOTE(mhayden): The unusual regex here ensures that we're omitting any lines
 # that are commented out. Some commented lines may be preprended with spaces,
@@ -208,6 +214,7 @@
     - high
     - V-71961
     - V-71963
+    - unsafe
 
 - name: V-72217 - The operating system must limit the number of concurrent sessions to 10 for all accounts and/or account types.
   blockinfile:
@@ -224,6 +231,7 @@
     - auth
     - low
     - V-72217
+    - unsafe
 
 - name: Check for pam_lastlog in PAM configuration
   command: "grep pam_lastlog {{ pam_postlogin_file }}"
@@ -270,6 +278,8 @@
     - auth
     - V-72277
     - V-72279
+    - unsafe
+
 - name: Check if GRUB defaults file exists
   stat:
     path: "{{ grub_defaults_file }}"
@@ -283,7 +293,7 @@
     dest: "/etc/pam.d/sshd"
     line: 'session required pam_lastlog.so showfailed'
     state: present
-
+    backup: true
   become: true
   notify:
     - update grub config

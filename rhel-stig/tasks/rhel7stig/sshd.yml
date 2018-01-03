@@ -79,6 +79,7 @@
     - V-72267
     - V-72261
     - V-72263
+    - unsafe
 
 - name: Ensure sshd is enabled at boot time
   service:

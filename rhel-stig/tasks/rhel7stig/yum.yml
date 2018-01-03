@@ -40,7 +40,8 @@
     - packages
     - medium
     - V-71999
-
+    - unsafe
+  
 - name: Apply package security updates (yum)
   yum:
     name:     '*'
@@ -51,3 +52,4 @@
     - security_packages_apply_updates
   tags:
     - packages
+    - unsafe

@@ -52,6 +52,7 @@
   tags:
     - high
     - V-71989
+    - unsafe
 
 # NOTE(mhayden): Since the AppArmor systemd unit calls a SysV init script, the
 # unit will always say AppArmor is dead. This means that the following task
@@ -70,6 +71,7 @@
   tags:
     - high
     - V-71989
+    - unsafe
 
 # NOTE(mhayden): The "changed_when" is required here because this task will
 # always show as changed when SELinux is completely disabled. It's not possible
@@ -88,6 +90,7 @@
     - high
     - V-71989
     - V-71991
+    - unsafe
 
 - name: Relabel files on next boot if SELinux mode changed
   file:
@@ -101,6 +104,7 @@
     - high
     - V-71989
     - V-71991
+    - unsafe
 
 # NOTE(mhayden): Ansible's find module doesn't support searching for files
 # based on SELinux contexts yet.
@@ -117,7 +121,8 @@
     - lsm
     - medium
     - V-72039
-
+    - unsafe
+    
 - name: V-72039 - All system device files must be correctly labeled to prevent unauthorized modification.
   debug:
     msg: |
@@ -133,3 +138,4 @@
     - lsm
     - medium
     - V-72039
+    - unsafe
