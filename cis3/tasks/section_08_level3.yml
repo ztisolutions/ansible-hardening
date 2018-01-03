@@ -19,7 +19,7 @@
 
   - name: 8.3.3 pam_cracklib install
     apt:
-      name: pam_cracklib
+      name: libpam-cracklib
       state: present
     tags:
-      - section8 
+      - section8
