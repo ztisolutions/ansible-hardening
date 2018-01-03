@@ -16,3 +16,18 @@
         - section8.3.2
         - lvl.1.server
         - lvl.1.workstation
+
+  - name: 8.3.3 pam_cracklib install
+    apt:
+      name: libpam-cracklib
+      state: present
+    tags:
+      - section8
+
+  - name: 8.3.4 pam_rules
+    lineinfile:
+      path: /etc/pam.d/common-password
+      backup: yes
+      create: yes
+      state: present
+      line: 'password required pam_cracklib.so retry=3 minlen=14 dcredit=-1 ucredit=-1 ocredit=-1 lcredit=-1'
