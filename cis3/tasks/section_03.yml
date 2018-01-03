@@ -1,36 +1,43 @@
 ---
-
+# Stuff related to forwarding
   - include_tasks: section_03_level1.yml
     tags:
       - section03
       - level1
-
+      - unsafe 
+# Some stuff that may be OK on prod servers
   - include_tasks: section_03_level2.yml
     tags:
       - section03
       - level2
-
+      - mixed
+# IPV6 may be needed on some prod servers
   - include_tasks: section_03_level3.yml
     tags:
       - section03
       - level3
-
+      - unsafe 
+# Don't want to mess around with hosts.allow and hosts.deny on prod
   - include_tasks: section_03_level4.yml
     tags:
       - section03
       - level4
-
+      - unsafe 
+# Don't disable modules that may be needed on prod
   - include_tasks: section_03_level5.yml
     tags:
       - section03
       - level5
-
+      - unsafe 
+# Don't mess around with firewall rules in production
   - include_tasks: section_03_level6.yml
     tags:
       - section03
       - level6
-
+      - unsafe 
+# RFKill prolly bad idea for production
   - include_tasks: section_03_level7.yml
     tags:
       - section03
       - level7
+      - unsafe 

@@ -44,6 +44,7 @@
     - V-71915
     - V-71917
     - V-71935
+    - unsafe
 
 - name: Check for SHA512 password storage in PAM
   command: "grep pam_unix.so {{ pam_password_file }}"
@@ -79,7 +80,7 @@
     - accounts
     - medium
     - V-71923
-
+    - unsafe
 # NOTE(mhayden): The "is mapping" check is required below because some users
 # may be attached to a Kerberos realm and they may not have shadow data on the
 # system. See bug 1659232 for more details.
@@ -95,6 +96,7 @@
     - accounts
     - medium
     - V-71927
+    - unsafe
 
 # NOTE(mhayden): The "is mapping" check is required below because some users
 # may be attached to a Kerberos realm and they may not have shadow data on the
@@ -111,7 +113,7 @@
     - accounts
     - medium
     - V-71931
-
+    - unsafe
 - name: Ensure that users cannot reuse one of their last 5 passwords
   lineinfile:
     dest: "{{ pam_password_file }}"
@@ -124,6 +126,7 @@
     - accounts
     - medium
     - V-71933
+    - unsafe
 
 - name: Ensure accounts are disabled if the password expires
   lineinfile:
@@ -137,6 +140,7 @@
     - accounts
     - medium
     - V-71941
+    - unsafe
 
 - name: Apply shadow-utils configurations
   lineinfile:
@@ -158,7 +162,8 @@
     - V-71951
     - V-71995
     - V-72013
-
+    - unsafe
+    
 - name: Print warning for groups in /etc/passwd that are not in /etc/group
   debug:
     msg: >
@@ -248,5 +253,5 @@
     - accounts
     - medium
     - V-73159
-
+    - unsafe
 

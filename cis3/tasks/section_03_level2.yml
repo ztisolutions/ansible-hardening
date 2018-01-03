@@ -11,6 +11,7 @@
       - section3.2.1
       - lvl.1.server
       - lvl.1.workstation
+      - unsafe 
       
   - name: 3.2.2 Ensure ICMP redirects are not accepted (Scored)
     sysctl:
@@ -23,6 +24,7 @@
       - section3.2.2
       - lvl.1.server
       - lvl.1.workstation
+      - unsafe 
       
   - name: 3.2.3 Ensure secure ICMP redirects are not accepted (Scored)
     sysctl:
@@ -35,6 +37,7 @@
       - section3.2.3
       - lvl.1.server
       - lvl.1.workstation
+      - unsafe 
       
   - name: 3.2.4 Ensure suspicious packets are logged (Scored)
     sysctl:
@@ -59,6 +62,7 @@
       - section3.2.5
       - lvl.1.server
       - lvl.1.workstation
+      - unsafe 
       
   - name: 3.2.6 Ensure bogus ICMP responses are ignored (Scored)
     sysctl:
@@ -83,6 +87,7 @@
       - section3.2.7
       - lvl.1.server
       - lvl.1.workstation
+      - unsafe 
       
   - name: 3.2.8 Ensure TCP SYN Cookies is enabled (Scored)
     sysctl:
@@ -96,4 +101,5 @@
       - section3.2.8
       - lvl.1.server
       - lvl.1.workstation
+      - unsafe 
       

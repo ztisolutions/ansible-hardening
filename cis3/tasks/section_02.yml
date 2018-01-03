@@ -1,16 +1,19 @@
 ---
-
+#Disables a ton of services
   - include_tasks: section_02_level1.yml
     tags:
       - section02
       - level1
-
+      - unsafe 
+# Disables more services that may be needed for prod
   - include_tasks: section_02_level2.yml
     tags:
       - section02
       - level2
-
+      - unsafe 
+# Removes clients that may be needed on prod
   - include_tasks: section_02_level3.yml
     tags:
       - section02
       - level3
+      - unsafe 

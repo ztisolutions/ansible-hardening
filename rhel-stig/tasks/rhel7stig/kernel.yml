@@ -25,6 +25,7 @@
     - kernel
     - medium
     - V-71983
+    - unsafe
 
 - name: Set sysctl configurations
   sysctl:
@@ -48,6 +49,7 @@
     - V-72293
     - V-72309
     - V-72319
+    - unsafe
 
 - name: Check kdump service
   command: systemctl status kdump

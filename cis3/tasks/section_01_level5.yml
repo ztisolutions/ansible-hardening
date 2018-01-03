@@ -51,6 +51,7 @@
       - lvl.1.server
       - lvl.1.workstation
       - not.scored
+      - unsafe 
       
   - name: 1.5.3 Ensure address space layout randomization (ASLR) is enabled (Scored)
     sysctl:
@@ -64,6 +65,7 @@
       - section1.5.3
       - lvl.1.server
       - lvl.1.workstation
+      - unsafe 
       
   - name: 1.5.4 Ensure prelink is disabled (Scored)
     apt:
@@ -75,4 +77,5 @@
       - section1.5.4
       - lvl.1.server
       - lvl.1.workstation
+      - unsafe 
       

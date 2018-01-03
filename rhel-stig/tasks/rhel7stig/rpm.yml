@@ -70,6 +70,7 @@
     - V-71977
     - V-71979
     - V-71981
+    - unsafe
 
 - name: V-71987 - Clean requirements/dependencies when removing packages (RedHat)
   lineinfile:
@@ -85,3 +86,4 @@
     - low
     - packages
     - V-71987
+    - unsafe
