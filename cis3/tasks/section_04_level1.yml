@@ -94,7 +94,7 @@
   - name: 4.1.4 Ensure events that modify date and time information are collected (Scored)
     lineinfile: 
       backup: yes
-      dest: /etc/audit/audit.rules
+      dest: "{{audit_rules_file}}"
       line: ' {{ item }} '
       state: present
       create: yes
@@ -115,7 +115,7 @@
       
   - name: 4.1.5 Ensure events that modify user/group information are collected (Scored)
     lineinfile:
-      dest: /etc/audit/audit.rules
+      dest: "{{audit_rules_file}}"
       line: ' {{ item }} '
       state: present
       create: yes    
@@ -136,7 +136,7 @@
       
   - name: 4.1.6 Ensure events that modify the system's network environment are collected (Scored)
     lineinfile:
-      dest: /etc/audit/audit.rules
+      dest: "{{audit_rules_file}}"
       line: ' {{ item }} '
       state: present
       create: yes
@@ -159,7 +159,7 @@
       
   - name: 4.1.7 Ensure events that modify the system's Mandatory Access Controls are collected (Scored)
     lineinfile:
-      dest: /etc/audit/audit.rules
+      dest: "{{audit_rules_file}}"
       line: ' {{ item }} '
       state: present
       create: yes
@@ -178,7 +178,7 @@
       
   - name: 4.1.8 Ensure login and logout events are collected (Scored)
     lineinfile:
-      dest: /etc/audit/audit.rules
+      dest: "{{audit_rules_file}}"
       line: ' {{ item }} '
       state: present
       create: yes
@@ -197,7 +197,7 @@
       
   - name: 4.1.9 Ensure session initiation information is collected (Scored)
     lineinfile:
-      dest: /etc/audit/audit.rules
+      dest: "{{audit_rules_file}}"
       line: ' {{ item }} '
       state: present
       create: yes
@@ -216,7 +216,7 @@
       
   - name: 4.1.10 Ensure discretionary access control permission modification events are collected (Scored)
     lineinfile:
-      dest: /etc/audit/audit.rules
+      dest: "{{audit_rules_file}}"
       line: ' {{ item }} '
       state: present
       create: yes
@@ -236,7 +236,7 @@
 
   - name: 4.1.11 Ensure unsuccessful unauthorized file access attempts are collected (Scored)
     lineinfile:
-      dest: /etc/audit/audit.rules
+      dest: "{{audit_rules_file}}"
       line: ' {{ item }} '
       state: present
       create: yes
@@ -266,7 +266,7 @@
       
   - name: 4.1.12 Ensure use of privileged commands is collected (Scored)
     lineinfile:
-      dest: /etc/audit/audit.rules
+      dest: "{{audit_rules_file}}"
       line: '-a always,exit -F path={{item}} -F perm=x -F auid>=1000 -F auid!=4294967295 -k privileged'
       state: present
       create: yes
@@ -282,7 +282,7 @@
       
   - name: 4.1.13 Ensure successful file system mounts are collected (Scored)
     lineinfile:
-      dest: /etc/audit/audit.rules
+      dest: "{{audit_rules_file}}"
       line: ' {{ item }} '
       state: present
       create: yes
@@ -300,7 +300,7 @@
       
   - name: 4.1.14 Ensure file deletion events by users are collected (Scored)
     lineinfile:
-      dest: /etc/audit/audit.rules
+      dest: "{{audit_rules_file}}"
       line: ' {{ item }} '
       state: present
       create: yes
@@ -318,7 +318,7 @@
       
   - name: 4.1.15 Ensure changes to system administration scope (sudoers) is collected (Scored)
     lineinfile:
-      dest: /etc/audit/audit.rules
+      dest: "{{audit_rules_file}}"
       line: ' {{ item }} '
       state: present
       create: yes
@@ -336,7 +336,7 @@
       
   - name: 4.1.16 Ensure system administrator actions (sudolog) are collected (Scored)
     lineinfile:
-      dest: /etc/audit/audit.rules
+      dest: "{{audit_rules_file}}"
       line: '-w /var/log/sudo.log -p wa -k actions'
       state: present
       create: yes
@@ -351,7 +351,7 @@
       
   - name: 4.1.17 Ensure kernel module loading and unloading is collected (Scored)
     lineinfile:
-      dest: /etc/audit/audit.rules
+      dest: "{{audit_rules_file}}"
       line: ' {{ item }} '
       state: present
       create: yes
@@ -371,7 +371,7 @@
       
   - name: 4.1.18 Ensure the audit configuration is immutable (Scored)
     lineinfile:
-      dest: /etc/audit/audit.rules
+      dest: "{{audit_rules_file}}"
       line: '-e 2'
       state: present
       create: yes
