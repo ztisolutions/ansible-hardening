@@ -1,0 +1,37 @@
+---
+
+  - name: iptables-persistent netfilter
+    apt:
+      name: iptables-persistent
+      state: present
+    tags:
+      - section9
+
+  - name: ipv6 router
+    lineinfile:
+      dest: /etc/sysctl.conf
+      line: '-w net.ipv6'
+      state: present
+    tags:
+      - section9
+
+  - name: ipv6 settings
+    blockinfile:
+      path: "/etc/sysctl.conf"
+      state: present
+      marker: "# {mark} MANAGED BY ANSIBLE-HARDENING"
+      insertafter: EOF
+      block: |
+        net.ipv6.conf.all.accept_ra=0
+        net.ipv6.conf.default.accept_ra=0
+        net.ipv6.route.flush=1
+    tags:
+      - section9
+
+  - name: cipher in sshd
+    lineinfile:
+      dest: "/etc/ssh/sshd_config"
+      state: present
+      line: 'Ciphers aes128-ctr,aes192-ctr,aes256-ctr'
+    tags:
+      - section9
