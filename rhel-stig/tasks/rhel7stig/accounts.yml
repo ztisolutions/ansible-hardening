@@ -163,7 +163,7 @@
     - V-71995
     - V-72013
     - unsafe
-    
+
 - name: Print warning for groups in /etc/passwd that are not in /etc/group
   debug:
     msg: >
@@ -254,4 +254,3 @@
     - medium
     - V-73159
     - unsafe
-
