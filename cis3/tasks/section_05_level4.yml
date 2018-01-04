@@ -96,6 +96,18 @@
       - lvl.1.server
       - lvl.1.workstation
 
+  - name: 5.4.1.4x Ensure inactive password lock is 30 days or less (Scored)
+    lineinfile:
+      dest: /etc/default/useradd
+      line: 'INACTIVE=35'
+      state: present
+    tags:
+      - section5
+      - section5.4
+      - section5.4.1.4x
+      - lvl.1.server
+      - lvl.1.workstation
+
   - shell: egrep -v "^\+" /etc/passwd | awk -F':' '($1!="root" && $1!="sync" && $1!="shutdown" && $1!="halt" && $3<1000 && $7!="/usr/sbin/nologin" && $7!="/bin/false") {print}'
     register: system_acounts
     changed_when: False
