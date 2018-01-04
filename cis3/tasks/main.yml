@@ -16,6 +16,9 @@
 
   - include_tasks: section_06.yml
     tags: section06
-    
+
   - include_tasks: section_08.yml
     tags: section08
+
+  - include_tasks: section_09.yml
+    tags: section09
