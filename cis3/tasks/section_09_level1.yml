@@ -30,10 +30,8 @@
 
   - name: cipher in sshd
     lineinfile:
-      path: "/etc/ssh/sshd_config"
+      dest: "/etc/ssh/sshd_config"
       state: present
-      marker: "# {mark} MANAGED BY ANSIBLE-HARDENING"
-      insertafter: EOF
-      line: Ciphers aes128-ctr,aes192-ctr,aes256-ctr
+      line: 'Ciphers aes128-ctr,aes192-ctr,aes256-ctr'
     tags:
       - section9
