@@ -15,15 +15,15 @@
     tags:
       - section9
 
-- name: ipv6 settings
-  blockinfile:
-    path: "/etc/sysctl.conf"
-    state: present
-    marker: "# {mark} MANAGED BY ANSIBLE-HARDENING"
-    insertafter: EOF
-    block: |
-      net.ipv6.conf.all.accept_ra=0
-      net.ipv6.conf.default.accept_ra=0
-      net.ipv6.route.flush=1
-  tags:
-    - section9
+  - name: ipv6 settings
+    blockinfile:
+      path: "/etc/sysctl.conf"
+      state: present
+      marker: "# {mark} MANAGED BY ANSIBLE-HARDENING"
+      insertafter: EOF
+      block: |
+        net.ipv6.conf.all.accept_ra=0
+        net.ipv6.conf.default.accept_ra=0
+        net.ipv6.route.flush=1
+    tags:
+      - section9
