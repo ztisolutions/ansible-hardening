@@ -14,7 +14,7 @@
       - section5.2.1
       - lvl.1.server
       - lvl.1.workstation
-      
+
   - name: 5.2.2 Ensure SSH Protocol is set to 2 (Scored)
     lineinfile:
       dest: /etc/ssh/sshd_config
@@ -27,8 +27,8 @@
       - section5.2.2
       - lvl.1.server
       - lvl.1.workstation
-      - unsafe 
-      
+      - unsafe
+
   - name: 5.2.3 Ensure SSH LogLevel is set to INFO (Scored)
     lineinfile:
       backup: yes
@@ -42,7 +42,7 @@
       - section5.2.3
       - lvl.1.server
       - lvl.1.workstation
-      
+
   - name: 5.2.4 Ensure SSH X11 forwarding is disabled (Scored)
     lineinfile:
       dest: /etc/ssh/sshd_config
@@ -55,8 +55,8 @@
       - section5.2.4
       - lvl.1.server
       - lvl.1.workstation
-      - unsafe 
-      
+      - unsafe
+
   - name: 5.2.5 Ensure SSH MaxAuthTries is set to 4 or less (Scored)
     lineinfile:
       dest: /etc/ssh/sshd_config
@@ -69,8 +69,8 @@
       - section5.2.5
       - lvl.1.server
       - lvl.1.workstation
-      - unsafe 
-      
+      - unsafe
+
   - name: 5.2.6 Ensure SSH IgnoreRhosts is enabled (Scored)
     lineinfile:
       dest: /etc/ssh/sshd_config
@@ -83,8 +83,8 @@
       - section5.2.6
       - lvl.1.server
       - lvl.1.workstation
-      - unsafe 
-      
+      - unsafe
+
   - name: 5.2.7 Ensure SSH HostbasedAuthentication is disabled (Scored)
     lineinfile:
       dest: /etc/ssh/sshd_config
@@ -97,13 +97,13 @@
       - section5.2.7
       - lvl.1.server
       - lvl.1.workstation
-      - unsafe 
-      
+      - unsafe
+
   - name: 5.2.8 Ensure SSH root login is disabled (Scored)
     lineinfile:
       dest: /etc/ssh/sshd_config
       regexp: '^PermitRootLogin'
-      line: 'PermitRootLogin {{ permit_root_login }}'
+      line: 'PermitRootLogin no'
     notify: restart ssh
     tags:
       - section5
@@ -111,8 +111,8 @@
       - section5.2.8
       - lvl.1.server
       - lvl.1.workstation
-      - unsafe 
-      
+      - unsafe
+
   - name: 5.2.9 Ensure SSH PermitEmptyPasswords is disabled (Scored)
     lineinfile:
       dest: /etc/ssh/sshd_config
@@ -125,8 +125,8 @@
       - section5.2.9
       - lvl.1.server
       - lvl.1.workstation
-      - unsafe 
-      
+      - unsafe
+
   - name: 5.2.10 Ensure SSH PermitUserEnvironment is disabled (Scored)
     lineinfile:
       dest: /etc/ssh/sshd_config
@@ -139,8 +139,8 @@
       - section5.2.10
       - lvl.1.server
       - lvl.1.workstation
-      - unsafe 
-      
+      - unsafe
+
   - name: 5.2.11 Ensure only approved MAC algorithms are used (Scored)
     lineinfile:
       dest: /etc/ssh/sshd_config
@@ -152,8 +152,8 @@
       - section5.2.11
       - lvl.1.server
       - lvl.1.workstation
-      - unsafe 
-      
+      - unsafe
+
   - name: 5.2.12 Ensure SSH Idle Timeout Interval is configured (Scored)
     lineinfile:
       dest: /etc/ssh/sshd_config
@@ -169,8 +169,8 @@
       - section5.2.12
       - lvl.1.server
       - lvl.1.workstation
-      - unsafe 
-      
+      - unsafe
+
   - name: 5.2.13 Ensure SSH LoginGraceTime is set to one minute or less (Scored)
     lineinfile:
       dest: /etc/ssh/sshd_config
@@ -183,8 +183,8 @@
       - section5.2.13
       - lvl.1.server
       - lvl.1.workstation
-      - unsafe 
-      
+      - unsafe
+
   - name: 5.2.14 Ensure SSH access is limited (Scored)
     lineinfile:
       dest: /etc/ssh/sshd_config
@@ -203,7 +203,7 @@
       - section5.2.14
       - lvl.1.server
       - lvl.1.workstation
-      - unsafe 
+      - unsafe
 
   - name: 5.2.14 add allowed users to sshallowusers group
     command: cat /etc/group
@@ -214,7 +214,7 @@
       - section5.2
       - section5.2.14
       - lvl.1.server
-      - unsafe 
+      - unsafe
       - lvl.1.workstation
 
   - name: Group doesn't exist then add
@@ -228,7 +228,7 @@
       - section5.2.14
       - lvl.1.server
       - lvl.1.workstation
-      - unsafe 
+      - unsafe
 
   - name: Check SSH group and add users
     command: adduser {{ item }} {{ sshd_allow_groups }}
@@ -241,7 +241,7 @@
       - section5.2.14
       - lvl.1.server
       - lvl.1.workstation
-      - unsafe 
+      - unsafe
 
   - name: 5.2.15 Ensure SSH warning banner is configured (Scored)
     lineinfile:
@@ -255,4 +255,3 @@
       - section5.2.15
       - lvl.1.server
       - lvl.1.workstation
-      
