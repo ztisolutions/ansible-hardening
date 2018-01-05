@@ -36,7 +36,7 @@ apt_cache_valid_time: 3600
 # Section 02 Level 2
 ntp_package: ntp
 # We focus a server installation, but we may be accept some desktops.
-remove_xserver: True
+remove_xserver: False
 
 # Section 03
 # Section 03 Level 1
@@ -69,7 +69,8 @@ disable_wifi: True
 enable_auditd: True
 # Set auditd logs file size in /var/log/auditd
 max_log_file_auditd: 32
-
+# File that audit rules are applied to
+audit_rules_file: /etc/audit/rules.d/audit.rules
 # Section 4 Level 2
 set_rsyslog_remote: True
 syslog_package: rsyslog

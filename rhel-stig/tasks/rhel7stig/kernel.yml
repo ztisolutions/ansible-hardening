@@ -27,6 +27,20 @@
     - V-71983
     - unsafe
 
+- name: V-71983 - USB mass storage must be disabled. (Workaround for nessus false-postive...)
+  lineinfile:
+    dest: /etc/modprobe.d/nosubstorage
+    line: install usb-storage /bin/true
+    create: yes
+  when:
+    - security_rhel7_disable_usb_storage | bool
+  become: true
+  tags:
+    - kernel
+    - medium
+    - V-71983
+    - unsafe
+
 - name: Set sysctl configurations
   sysctl:
     name: "{{ item.name }}"
