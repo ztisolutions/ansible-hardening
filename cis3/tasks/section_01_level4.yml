@@ -1,17 +1,22 @@
 ---
 
-  - name: 1.4.1 Ensure permissions on bootloader config are configured (Scored)
-    file:
-      dest: /boot/grub/grub.cfg
-      owner: root
-      group: root
-      mode: og-rwx 
-    tags:
-      - section1
-      - section1.4
-      - section1.4.1
-      - lvl.1.server
-      - lvl.1.workstation
+#  - name: 1.4.1 Ensure permissions on bootloader config are configured (Scored)
+#    file:
+#      dest: /boot/grub/grub.cfg
+#      owner: root
+#      group: root
+#      mode: 'og-rwx'
+#    tags:
+#      - section1
+#      - section1.4
+#      - section1.4.1
+#      - lvl.1.server
+#      - lvl.1.workstation
+
+   - name: 1.4.1
+     command: sudo chmod og-rwx /boot/grub/grub.cfg
+     tags:
+       - section1.4.1
 
   - command: grep "^password" /boot/grub/grub.cfg
     register: boot_password
