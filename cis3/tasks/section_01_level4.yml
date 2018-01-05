@@ -13,10 +13,10 @@
 #      - lvl.1.server
 #      - lvl.1.workstation
 
-   - name: 1.4.1
-     command: sudo chmod og-rwx /boot/grub/grub.cfg
-     tags:
-       - section1.4.1
+  - name: 1.4.1
+    command: sudo chmod og-rwx /boot/grub/grub.cfg
+    tags:
+      - section1.4.1
 
   - command: grep "^password" /boot/grub/grub.cfg
     register: boot_password
